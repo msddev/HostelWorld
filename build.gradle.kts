@@ -4,6 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
 
-    id(libs.plugins.dagger.hilt.get().toString()) version libs.versions.hilt apply false
-    id(libs.plugins.ksp.get().toString()) version libs.versions.ksp apply false
+    alias(libs.plugins.dagger.hilt) apply false
+    alias(libs.plugins.ksp) apply false
 }
