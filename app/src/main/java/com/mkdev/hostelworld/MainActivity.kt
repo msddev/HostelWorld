@@ -1,4 +1,4 @@
-package com.example.hostelworld
+package com.mkdev.hostelworld
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hostelworld.ui.theme.HostelWorldTheme
+import com.mkdev.hostelworld.ui.theme.HostelWorldTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

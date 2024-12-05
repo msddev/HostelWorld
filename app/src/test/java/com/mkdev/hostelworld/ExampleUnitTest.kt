@@ -1,4 +1,4 @@
-package com.example.hostelworld
+package com.mkdev.hostelworld
 
 import org.junit.Test
 
