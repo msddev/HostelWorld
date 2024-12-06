@@ -51,8 +51,18 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    ksp(libs.hilt.ksp.compiler)
-    implementation(libs.hilt.core)
+
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.compose.runtime.livedata)
+
+    // Compose Navigation
+    implementation(libs.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
+
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
