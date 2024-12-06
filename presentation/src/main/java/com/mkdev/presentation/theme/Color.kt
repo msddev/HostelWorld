@@ -1,4 +1,4 @@
-package com.mkdev.hostelworld.ui.theme
+package com.mkdev.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

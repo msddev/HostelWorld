@@ -1,4 +1,4 @@
-package com.mkdev.hostelworld.ui.theme
+package com.mkdev.presentation.theme
 
 import android.app.Activity
 import android.os.Build
