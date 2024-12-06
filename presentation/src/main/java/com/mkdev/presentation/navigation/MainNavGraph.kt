@@ -5,8 +5,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.mkdev.presentation.propertyDetail.PropertyDetailScreen
-import com.mkdev.presentation.propertyList.PropertyListScreen
+import com.mkdev.presentation.screen.propertyDetail.PropertyDetailScreen
+import com.mkdev.presentation.screen.propertyList.PropertyListScreen
 
 @Composable
 fun MainNavGraph(

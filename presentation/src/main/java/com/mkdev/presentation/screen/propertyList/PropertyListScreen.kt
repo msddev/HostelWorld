@@ -1,4 +1,4 @@
-package com.mkdev.presentation.propertyDetail
+package com.mkdev.presentation.screen.propertyList
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,16 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-internal fun PropertyDetailScreen(
-    onBackClick: () -> Unit,
+internal fun PropertyListScreen(
+    navigateToPropertyDetailScreen: () -> Unit,
 ) {
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Green)
+            .background(Color.Red)
             .clickable {
-                onBackClick.invoke()
+                navigateToPropertyDetailScreen.invoke()
             }
     ) {
 

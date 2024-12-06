@@ -10,4 +10,7 @@ java {
 
 dependencies {
 
+    // Kotlin Coroutine
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 }
