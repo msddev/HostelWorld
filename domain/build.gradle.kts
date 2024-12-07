@@ -10,7 +10,7 @@ java {
 
 dependencies {
 
-    // Kotlin Coroutine
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.core)
+    // Rx
+    implementation(libs.rxjava2)
+    implementation(libs.rxkotlin2)
 }

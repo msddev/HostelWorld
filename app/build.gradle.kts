@@ -71,9 +71,15 @@ dependencies {
     // Networking
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofit2.adapter.rxjava2)
     implementation(libs.okhttp3)
     implementation(libs.okhttp3.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
+
+    // Rx
+    implementation(libs.rxandroid2)
+    implementation(libs.rxjava2)
+    implementation(libs.rxkotlin2)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

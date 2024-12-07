@@ -25,12 +25,8 @@ data class PropertyResponse(
     val latitude: Double,
     @SerializedName("longitude")
     val longitude: Double,
-    @SerializedName("lowestDormPricePerNight")
-    val lowestDormPricePerNight: PricePerNightResponse,
     @SerializedName("lowestPricePerNight")
     val lowestPricePerNight: PricePerNightResponse,
-    @SerializedName("lowestPrivatePricePerNight")
-    val lowestPrivatePricePerNight: PricePerNightResponse,
     @SerializedName("name")
     val name: String,
     @SerializedName("overallRating")

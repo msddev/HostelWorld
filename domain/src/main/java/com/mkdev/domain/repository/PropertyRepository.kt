@@ -1,9 +1,8 @@
 package com.mkdev.domain.repository
 
 import com.mkdev.domain.entity.PropertyEntity
-import com.mkdev.domain.unit.Resource
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.Single
 
 interface PropertyRepository {
-    fun getProperties(): Flow<Resource<List<PropertyEntity>>>
+    fun getProperties(): Single<List<PropertyEntity>>
 }

@@ -57,6 +57,11 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.hilt.navigation.compose)
 
+    // Rx
+    implementation(libs.rxandroid2)
+    implementation(libs.rxjava2)
+    implementation(libs.rxkotlin2)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
