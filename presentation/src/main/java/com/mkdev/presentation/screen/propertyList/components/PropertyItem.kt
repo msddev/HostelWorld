@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,7 +37,7 @@ import com.mkdev.presentation.model.PropertyModel
 import com.mkdev.presentation.theme.*
 
 @Composable
-internal fun PropertyNormalItem(
+internal fun PropertyItem(
     modifier: Modifier,
     property: PropertyModel,
     onItemClick: () -> Unit,
@@ -46,7 +47,7 @@ internal fun PropertyNormalItem(
         shape = RoundedCornerShape(dimensionResource(id = R.dimen.padding_medium)),
         elevation = CardDefaults.cardElevation(1.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White, // Card background color
+            containerColor = if(property.isFeatured) LightGreen else Color.White, // Card background color
             contentColor = Color.Black  // Card content color,e.g.text
         ),
         onClick = onItemClick,
@@ -57,17 +58,17 @@ internal fun PropertyNormalItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             CoilImage(
-                imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
-                    .orEmpty(),
                 modifier = Modifier
                     .size(110.dp)
-                    .padding(8.dp)
+                    .padding(dimensionResource(R.dimen.padding_small))
                     .clip(
                         RoundedCornerShape(
                             size = dimensionResource(id = R.dimen.corner_radius_small)
                         )
                     ),
-                contentScale = ContentScale.FillHeight
+                imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
+                    .orEmpty(),
+                contentScale = ContentScale.FillBounds
             )
 
             Column(modifier = Modifier.fillMaxWidth()) {
@@ -105,7 +106,7 @@ internal fun PropertyNormalItem(
 
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Row(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.wrapContentWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Icon(
@@ -145,7 +146,7 @@ internal fun PropertyNormalItem(
 @Composable
 private fun ScreenPreview() {
     MaterialTheme {
-        PropertyNormalItem(
+        PropertyItem(
             modifier = Modifier.fillMaxWidth(),
             property = mockPropertyItem,
             onItemClick = {

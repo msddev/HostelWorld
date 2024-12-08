@@ -1,5 +1,11 @@
 package com.mkdev.presentation.common.utils
 
+import com.mkdev.presentation.model.PropertyModel
+
+internal fun extractFeaturedProperties(properties: List<PropertyModel>): Pair<List<PropertyModel>, List<PropertyModel>> {
+    return properties.partition { it.isFeatured }
+}
+
 /*
 fun HotelFacility.asStringRes() = when (this) {
     SWIMMING_POOL -> R.string.search_screen_filter_facility_swimming_pool

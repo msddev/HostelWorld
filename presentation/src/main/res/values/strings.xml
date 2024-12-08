@@ -16,4 +16,8 @@
     <string name="photos">Photos</string>
     <string name="description">Description</string>
     <string name="features">Features</string>
+    <string name="searching_text">Loading…</string>
+    <string name="no_results_found">No results found!</string>
+    <string name="oops_something_went_wrong">Oops, something went wrong!</string>
+    <string name="featured_properties">Featured Properties</string>
 </resources>

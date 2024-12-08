@@ -5,6 +5,11 @@ internal data class ImagesGalleryModel(
     val suffix: String,
 ) {
     fun getImageUrl(): String {
-        return prefix + suffix
+        val url = prefix + suffix
+        return if (url.startsWith("http://") || url.startsWith("https://")) {
+            url
+        } else {
+            "https://$url"
+        }
     }
 }

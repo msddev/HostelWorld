@@ -16,30 +16,26 @@ internal class PropertyListViewModel @Inject constructor(
     private val getPropertyListUseCase: GetPropertyListUseCase
 ) : BaseViewModel() {
 
-    private val propertiesMutableLiveData: MutableLiveData<PropertyListUiState> by lazy {
-        MutableLiveData(
-            PropertyListUiState.Loading
-        )
-    }
-    val propertiesLiveData: LiveData<PropertyListUiState> by lazy { propertiesMutableLiveData }
+    private val _properties = MutableLiveData<PropertyListUiState>(PropertyListUiState.Loading)
+    val properties: LiveData<PropertyListUiState> = _properties
 
     init {
-        //fetchPropertyList()
+        fetchPropertyList()
     }
 
     fun fetchPropertyList() {
-        propertiesMutableLiveData.value = PropertyListUiState.Loading
+        _properties.value = PropertyListUiState.Loading
 
         getPropertyListUseCase()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { propertyEntities ->
-                    propertiesMutableLiveData.value =
+                    _properties.value =
                         PropertyListUiState.Success(data = propertyEntities.map { it.toPropertyModel() })
                 },
                 { throwable ->
-                    propertiesMutableLiveData.value =
+                    _properties.value =
                         PropertyListUiState.Error(throwable = throwable)
                 }
             )

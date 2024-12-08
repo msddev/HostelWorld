@@ -8,8 +8,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
+import coil.request.CachePolicy
 import coil.request.ImageRequest
+import coil.util.DebugLogger
 import com.mkdev.presentation.R
 import com.mkdev.presentation.theme.HostelWorldTheme
 
@@ -21,11 +24,18 @@ fun CoilImage(
 ) {
     Image(
         painter = rememberAsyncImagePainter(
-            ImageRequest.Builder(LocalContext.current)
+            model = ImageRequest.Builder(LocalContext.current)
                 .data(imageUrl)
                 .placeholder(R.drawable.img_place_holder)
                 .error(R.drawable.img_place_holder)
                 .crossfade(true)
+                .memoryCacheKey(imageUrl)
+                .diskCacheKey(imageUrl)
+                .build(),
+            imageLoader = ImageLoader.Builder(LocalContext.current)
+                .memoryCachePolicy(CachePolicy.ENABLED)
+                .diskCachePolicy(CachePolicy.ENABLED)
+                .logger(DebugLogger())
                 .build()
         ),
         contentDescription = null,
