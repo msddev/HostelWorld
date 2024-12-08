@@ -47,7 +47,13 @@ internal fun mockPropertyModel() = PropertyModel(
     facilities = listOf(mockFacilityListModel()),
     freeCancellationAvailable = true,
     id = 1,
-    imagesGallery = listOf(mockImagesGalleryModel()),
+    imagesGallery = listOf(
+        mockImagesGalleryModel(),
+        mockImagesGalleryModel(),
+        mockImagesGalleryModel(),
+        mockImagesGalleryModel(),
+        mockImagesGalleryModel(),
+    ),
     isFeatured = true,
     isNew = false,
     latitude = 37.7749,
@@ -55,7 +61,7 @@ internal fun mockPropertyModel() = PropertyModel(
     lowestPricePerNight = mockPricePerNightModel(),
     name = "Cozy Apartment",
     overallRating = mockOverallRatingModel(),
-    overview = "A comfortable and modern apartment in the heart of the city.",
+    overview = "A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city. A comfortable and modern apartment in the heart of the city.",
     type = "Apartment"
 )
 

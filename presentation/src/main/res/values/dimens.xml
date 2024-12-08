@@ -33,5 +33,6 @@
     <dimen name="icon_size_x_small">12dp</dimen>
 
     <dimen name="card_elevation">6dp</dimen>
+    <dimen name="divider_thickness">1dp</dimen>
 
 </resources>

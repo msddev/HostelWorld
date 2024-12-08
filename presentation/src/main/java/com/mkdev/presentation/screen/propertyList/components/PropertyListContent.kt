@@ -33,8 +33,7 @@ internal fun PropertyListContent(
     onItemClick: () -> Unit,
 ) {
     Scaffold(
-        modifier = Modifier
-            .statusBarsPadding(),
+        modifier = modifier.statusBarsPadding(),
         topBar = {
             SearchBarView(
                 modifier = Modifier
@@ -78,7 +77,7 @@ internal fun PropertyListContent(
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_x_small)))
                 }
 
-                items(featuredProperties) { item ->
+                items(normalProperties) { item ->
                     PropertyNormalItem(
                         modifier = Modifier
                             .fillMaxWidth()

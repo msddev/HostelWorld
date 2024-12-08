@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
@@ -58,16 +59,21 @@ internal fun PropertyFeaturedItem(
             CoilImage(
                 imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
                     .orEmpty(),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .clip(
+                        RoundedCornerShape(
+                            size = dimensionResource(id = R.dimen.corner_radius_small)
+                        )
+                    ),
                 contentScale = ContentScale.FillWidth
             )
-
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_3x_small)))
 
             Text(
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                    .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                 text = property.name,
                 maxLines = 1,
                 fontWeight = FontWeight.Bold,
@@ -79,7 +85,7 @@ internal fun PropertyFeaturedItem(
             Row(
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                    .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row(
@@ -115,7 +121,7 @@ internal fun PropertyFeaturedItem(
                 )
             }
 
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_3x_small)))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
         }
     }
 }

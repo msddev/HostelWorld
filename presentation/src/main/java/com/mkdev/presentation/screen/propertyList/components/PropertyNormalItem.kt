@@ -60,7 +60,7 @@ internal fun PropertyNormalItem(
                 imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
                     .orEmpty(),
                 modifier = Modifier
-                    .size(90.dp)
+                    .size(110.dp)
                     .padding(8.dp)
                     .clip(
                         RoundedCornerShape(
@@ -70,10 +70,7 @@ internal fun PropertyNormalItem(
                 contentScale = ContentScale.FillHeight
             )
 
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = property.name,
                     maxLines = 1,
@@ -103,6 +100,32 @@ internal fun PropertyNormalItem(
                         fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
                     )
                 }
+
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        modifier = Modifier.size(dimensionResource(R.dimen.icon_size_x_small)),
+                        painter = painterResource(id = R.drawable.ic_location),
+                        contentDescription = null,
+                        tint = Amber,
+                    )
+
+                    Text(
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                        text = "Location",
+                        maxLines = 1,
+                        fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
+                    )
+                }
+
+
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
 
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Row(
