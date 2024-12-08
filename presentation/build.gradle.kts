@@ -67,8 +67,8 @@ dependencies {
     implementation(libs.rxjava2)
     implementation(libs.rxkotlin2)
 
-    // Coil
-    implementation(libs.coil)
+    // Glide
+    implementation(libs.glide.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

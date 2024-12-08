@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
-import com.mkdev.presentation.common.components.CoilImage
+import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.model.PropertyModel
@@ -57,18 +57,14 @@ internal fun PropertyItem(
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            CoilImage(
+            GlideImageLoader(
                 modifier = Modifier
                     .size(110.dp)
                     .padding(dimensionResource(R.dimen.padding_small))
-                    .clip(
-                        RoundedCornerShape(
-                            size = dimensionResource(id = R.dimen.corner_radius_small)
-                        )
-                    ),
+                    .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
                 imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
                     .orEmpty(),
-                contentScale = ContentScale.None
+                contentScale = ContentScale.Crop
             )
 
             Column(modifier = Modifier.fillMaxWidth()) {

@@ -20,4 +20,5 @@
     <string name="no_results_found">No results found!</string>
     <string name="oops_something_went_wrong">Oops, something went wrong!</string>
     <string name="featured_properties">Featured Properties</string>
+    <string name="back_to_home">Back to home</string>
 </resources>

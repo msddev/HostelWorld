@@ -22,10 +22,11 @@ import androidx.compose.ui.unit.sp
 import com.mkdev.presentation.R
 
 @Composable
-fun RetryColumn(
+fun ErrorColumn(
     modifier: Modifier = Modifier,
     message: String,
-    onRetry: () -> Unit,
+    actionButtonText: String = stringResource(R.string.retry),
+    onAction: () -> Unit,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -49,9 +50,9 @@ fun RetryColumn(
 
         Button(
             modifier = Modifier.padding(top = dimensionResource(R.dimen.padding_standard)),
-            onClick = onRetry
+            onClick = onAction
         ) {
-            Text(text = stringResource(R.string.retry))
+            Text(text = actionButtonText)
         }
     }
 }
@@ -59,5 +60,9 @@ fun RetryColumn(
 @Preview(showSystemUi = true)
 @Composable
 private fun ErrorColumnPreview() {
-    RetryColumn(message = "Oops!", onRetry = {})
+    ErrorColumn(
+        message = "Oops!",
+        actionButtonText = stringResource(R.string.retry),
+        onAction = {}
+    )
 }

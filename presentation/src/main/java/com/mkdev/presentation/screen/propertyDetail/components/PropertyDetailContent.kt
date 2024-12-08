@@ -41,8 +41,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
-import com.mkdev.presentation.common.components.CoilImage
 import com.mkdev.presentation.common.components.ExpandableTextView
+import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.model.ImagesGalleryModel
@@ -158,7 +158,7 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
         modifier = modifier,
     ) {
         items(images) { item ->
-            CoilImage(
+            GlideImageLoader(
                 imageUrl = item.getImageUrl(),
                 modifier = Modifier
                     .size(110.dp)
@@ -168,7 +168,7 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
                             size = dimensionResource(id = R.dimen.corner_radius_small)
                         )
                     ),
-                contentScale = ContentScale.FillWidth,
+                contentScale = ContentScale.Crop,
             )
         }
     }
@@ -239,7 +239,7 @@ private fun PropertyNameAndLocationView(modifier: Modifier, property: PropertyMo
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = dimensionResource(R.dimen.padding_small)),
-            text = "Location",
+            text = property.address1,
             maxLines = 1,
             fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
             color = GrayScale700
@@ -249,13 +249,13 @@ private fun PropertyNameAndLocationView(modifier: Modifier, property: PropertyMo
 
 @Composable
 private fun HeaderImageView(modifier: Modifier, property: PropertyModel) {
-    CoilImage(
+    GlideImageLoader(
         imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)
             ?.getImageUrl()
             .orEmpty(),
         modifier = modifier
             .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
-        contentScale = ContentScale.None
+        contentScale = ContentScale.Crop
     )
 }
 

@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mkdev.presentation.R
-import com.mkdev.presentation.common.components.error.RetryColumn
+import com.mkdev.presentation.common.components.error.ErrorColumn
 import com.mkdev.presentation.common.components.loading.LoadingColumn
 import com.mkdev.presentation.screen.propertyList.components.PropertyListContent
 import com.mkdev.presentation.viewmodel.PropertyListViewModel
@@ -29,9 +29,9 @@ internal fun PropertyListScreen(
 
         is PropertyListUiState.Success -> {
             if (uiState.data.isEmpty()) {
-                RetryColumn(
+                ErrorColumn(
                     message = stringResource(R.string.no_results_found),
-                    onRetry = {
+                    onAction = {
                         viewModel.fetchPropertyList()
                     }
                 )
@@ -52,10 +52,10 @@ internal fun PropertyListScreen(
         }
 
         is PropertyListUiState.Error -> {
-            RetryColumn(
+            ErrorColumn(
                 message = uiState.throwable.message
                     ?: stringResource(R.string.oops_something_went_wrong),
-                onRetry = {
+                onAction = {
                     viewModel.fetchPropertyList()
                 }
             )
