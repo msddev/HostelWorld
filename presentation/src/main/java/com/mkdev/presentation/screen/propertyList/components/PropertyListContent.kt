@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -34,39 +35,6 @@ internal fun PropertyListContent(
     normalProperties: List<PropertyModel>,
     onItemClick: () -> Unit,
 ) {
-    /*Scaffold(
-        modifier = Modifier
-            .statusBarsPadding()
-            .background(BackgroundGray),
-        topBar = {
-            SearchBarView(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(dimensionResource(id = R.dimen.padding_x_small)),
-            )
-        },
-        content = { padding ->
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                item{
-                    Text(text = "Featured Properties")
-                }
-
-                items(featuredProperties) { property ->
-                    FeaturedPropertyItem(property)
-                }
-
-                items(normalProperties) { property ->
-                    NormalPropertyItem(property)
-                }
-            }
-        }
-    )*/
-
     Scaffold(
         modifier = Modifier
             .statusBarsPadding(),
@@ -87,41 +55,44 @@ internal fun PropertyListContent(
                 item {
                     Text(text = "Featured Properties")
                 }
-
-                items(featuredProperties) { item ->
-                    FeaturedPropertyItem(item)
+                item {
+                    LazyRow(
+                        Modifier
+                            .fillMaxSize(),
+                        contentPadding = PaddingValues(bottom = 16.dp)
+                    ) {
+                        items(featuredProperties) { item ->
+                            FeaturedPropertyItem(item)
+                        }
+                    }
                 }
-
                 items(featuredProperties) { item ->
                     NormalPropertyItem(item)
                 }
             }
         }
     )
-
 }
 
 @Composable
-private fun FeaturedPropertyItem(properties: PropertyModel) {
+private fun FeaturedPropertyItem(property: PropertyModel) {
     Box(
         modifier = Modifier
-            .size(80.dp)
+            .size(160.dp)
+            .padding(8.dp)
             .background(color = Color.Green)
-    ) {
-
-    }
+    )
 }
 
 @Composable
-private fun NormalPropertyItem(properties: PropertyModel) {
+private fun NormalPropertyItem(property: PropertyModel) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(88.dp)
+            .height(160.dp)
+            .padding(8.dp)
             .background(color = Color.Blue)
-    ) {
-
-    }
+    )
 }
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
