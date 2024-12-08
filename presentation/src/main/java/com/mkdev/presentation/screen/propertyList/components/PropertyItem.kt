@@ -116,7 +116,7 @@ internal fun PropertyItem(
                             modifier = Modifier
                                 .wrapContentSize()
                                 .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
-                            text = property.overallRating.overall.toString(),
+                            text = property.overallRating.convertOverallRating(),
                             maxLines = 1,
                             fontSize = dimensionResource(R.dimen.text_size_small).textSp,
                         )
