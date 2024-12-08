@@ -24,7 +24,7 @@ internal class PropertyListViewModel @Inject constructor(
     val propertiesLiveData: LiveData<PropertyListUiState> by lazy { propertiesMutableLiveData }
 
     init {
-        fetchPropertyList()
+        //fetchPropertyList()
     }
 
     fun fetchPropertyList() {

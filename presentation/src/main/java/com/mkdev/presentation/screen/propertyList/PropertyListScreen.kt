@@ -1,15 +1,16 @@
 package com.mkdev.presentation.screen.propertyList
 
 import android.util.Log
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.mkdev.presentation.R
+import com.mkdev.presentation.mockData.mockPropertyList
+import com.mkdev.presentation.screen.propertyList.components.PropertyListContent
 import com.mkdev.presentation.viewmodel.PropertyListViewModel
 
 @Composable
@@ -34,14 +35,14 @@ internal fun PropertyListScreen(
         }
     }
 
-    Box(
+    PropertyListContent(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Red)
-            .clickable {
-                navigateToPropertyDetailScreen.invoke()
-            }
-    ) {
+            .padding(dimensionResource(id = R.dimen.padding_x_small)),
+        featuredProperties = mockPropertyList,
+        normalProperties = mockPropertyList,
+        onItemClick = {
 
-    }
+        },
+    )
 }
