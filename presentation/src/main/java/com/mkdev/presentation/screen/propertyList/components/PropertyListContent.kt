@@ -1,33 +1,30 @@
 package com.mkdev.presentation.screen.propertyList.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
+import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.mockData.mockPropertyList
 import com.mkdev.presentation.model.PropertyModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PropertyListContent(
     modifier: Modifier,
@@ -47,51 +44,53 @@ internal fun PropertyListContent(
         },
         content = { padding ->
             LazyColumn(
-                Modifier
+                modifier = Modifier
                     .fillMaxSize()
                     .padding(padding),
-                contentPadding = PaddingValues(bottom = 16.dp)
             ) {
                 item {
-                    Text(text = "Featured Properties")
+                    Text(
+                        modifier=Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 8.dp),
+                        text = "Featured Properties"
+                    )
                 }
                 item {
                     LazyRow(
-                        Modifier
-                            .fillMaxSize(),
-                        contentPadding = PaddingValues(bottom = 16.dp)
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(8.dp)
                     ) {
                         items(featuredProperties) { item ->
-                            FeaturedPropertyItem(item)
+                            PropertyFeaturedItem(
+                                modifier = Modifier
+                                    .width(180.dp)
+                                    .padding(end = 8.dp),
+                                property = mockPropertyItem,
+                                onItemClick = {
+
+                                },
+                            )
                         }
                     }
                 }
+                item {
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_x_small)))
+                }
+
                 items(featuredProperties) { item ->
-                    NormalPropertyItem(item)
+                    PropertyNormalItem(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp),
+                        property = mockPropertyItem,
+                        onItemClick = {
+
+                        },
+                    )
                 }
             }
         }
-    )
-}
-
-@Composable
-private fun FeaturedPropertyItem(property: PropertyModel) {
-    Box(
-        modifier = Modifier
-            .size(160.dp)
-            .padding(8.dp)
-            .background(color = Color.Green)
-    )
-}
-
-@Composable
-private fun NormalPropertyItem(property: PropertyModel) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(160.dp)
-            .padding(8.dp)
-            .background(color = Color.Blue)
     )
 }
 

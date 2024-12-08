@@ -22,6 +22,7 @@ kotlinxSerializationJson = "1.6.3"
 rxAndroid = "2.1.1"
 rxJava = "2.2.21"
 rxkotlin = "2.2.0"
+coil = "2.5.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -53,6 +54,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 rxandroid2 = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxAndroid" }
 rxjava2 = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxJava" }
 rxkotlin2 = { module = "io.reactivex.rxjava2:rxkotlin", version.ref = "rxkotlin" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 [plugins]
 app-namespace = { id = "com.mkdev.hostelworld" }

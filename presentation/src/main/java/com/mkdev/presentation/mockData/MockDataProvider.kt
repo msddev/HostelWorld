@@ -20,8 +20,8 @@ internal fun mockPricePerNightModel() = PricePerNightModel(
 )
 
 internal fun mockImagesGalleryModel() = ImagesGalleryModel(
-    prefix = "https://example.com/images/",
-    suffix = "property_1.jpg"
+    prefix = "res.cloudinary.com/test-hostelworld-com/image/upload/f_auto,q_auto",
+    suffix = "/v1/propertyimages/1/113/1.jpg"
 )
 
 internal fun mockFacilityModel() = FacilityModel(
@@ -66,3 +66,5 @@ internal val mockPropertyList = listOf(
     mockPropertyModel(),
     mockPropertyModel()
 )
+
+internal val mockPropertyItem = mockPropertyModel()

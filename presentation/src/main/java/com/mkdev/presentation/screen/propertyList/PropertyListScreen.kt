@@ -1,6 +1,7 @@
 package com.mkdev.presentation.screen.propertyList
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.mkdev.presentation.R
 import com.mkdev.presentation.mockData.mockPropertyList
 import com.mkdev.presentation.screen.propertyList.components.PropertyListContent
+import com.mkdev.presentation.theme.*
 import com.mkdev.presentation.viewmodel.PropertyListViewModel
 
 @Composable
@@ -38,7 +40,8 @@ internal fun PropertyListScreen(
     PropertyListContent(
         modifier = Modifier
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.padding_x_small)),
+            .padding(dimensionResource(id = R.dimen.padding_x_small))
+            .background(color = BackgroundGray),
         featuredProperties = mockPropertyList,
         normalProperties = mockPropertyList,
         onItemClick = {

@@ -26,3 +26,5 @@ val GrayScale300: Color = Color(0xFFE0E0E0)
 val GrayScale200: Color = Color(0xFFEEEEEE)
 val GrayScale100: Color = Color(0xFFF5F5F5)
 val GrayScale50: Color = Color(0xFFFAFAFA)
+
+val Amber: Color = Color(0xFFFFC02D)

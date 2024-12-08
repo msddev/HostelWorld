@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,7 +39,7 @@ internal fun SearchBarView(
             modifier = Modifier
                 .weight(1f)
                 .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                .background(White)
+                .background(Color.White)
                 .padding(dimensionResource(R.dimen.padding_medium)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
@@ -64,7 +65,7 @@ internal fun SearchBarView(
         Icon(
             modifier = Modifier
                 .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                .background(White)
+                .background(Color.White)
                 .padding(dimensionResource(R.dimen.padding_medium))
                 .size(dimensionResource(R.dimen.icon_size_standard)),
             painter = painterResource(id = R.drawable.ic_filter_border),

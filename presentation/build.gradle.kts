@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.rxjava2)
     implementation(libs.rxkotlin2)
 
+    // Coil
+    implementation(libs.coil)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
