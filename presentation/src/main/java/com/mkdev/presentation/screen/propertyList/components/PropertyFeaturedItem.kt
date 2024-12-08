@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,7 +62,7 @@ internal fun PropertyFeaturedItem(
                     .orEmpty(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(dimensionResource(R.dimen.padding_small))
                     .clip(
                         RoundedCornerShape(
                             size = dimensionResource(id = R.dimen.corner_radius_small)
@@ -113,7 +114,8 @@ internal fun PropertyFeaturedItem(
 
                 Text(
                     modifier = Modifier.weight(2f),
-                    text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value} / night",
+                    text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value} / " +
+                            stringResource(R.string.night_text),
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.End,

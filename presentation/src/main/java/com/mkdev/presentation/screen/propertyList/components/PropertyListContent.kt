@@ -51,20 +51,20 @@ internal fun PropertyListContent(
                     Text(
                         modifier=Modifier
                             .fillMaxSize()
-                            .padding(horizontal = 8.dp),
+                            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                         text = "Featured Properties"
                     )
                 }
                 item {
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(8.dp)
+                        contentPadding = PaddingValues(dimensionResource(R.dimen.padding_small))
                     ) {
                         items(featuredProperties) { item ->
                             PropertyFeaturedItem(
                                 modifier = Modifier
                                     .width(180.dp)
-                                    .padding(end = 8.dp),
+                                    .padding(end = dimensionResource(R.dimen.padding_small)),
                                 property = mockPropertyItem,
                                 onItemClick = {
 
@@ -81,7 +81,7 @@ internal fun PropertyListContent(
                     PropertyNormalItem(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 8.dp),
+                            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                         property = mockPropertyItem,
                         onItemClick = {
 

@@ -35,43 +35,49 @@ internal fun SearchBarView(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        Row(
-            modifier = Modifier
-                .weight(1f)
-                .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                .background(Color.White)
-                .padding(dimensionResource(R.dimen.padding_medium)),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
+        Surface(
+            modifier = Modifier.weight(1f),
+            shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)
         ) {
-            Icon(
-                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
-                painter = painterResource(id = R.drawable.ic_search_border),
-                contentDescription = null,
-                tint = GrayScale300,
-            )
+            Row(
+                modifier = Modifier
+                    .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
+                    .background(Color.White)
+                    .padding(dimensionResource(R.dimen.padding_medium)),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                Icon(
+                    modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
+                    painter = painterResource(id = R.drawable.ic_search_border),
+                    contentDescription = null,
+                    tint = GrayScale300,
+                )
 
-            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
+                Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
 
-            Text(
-                modifier = Modifier.weight(1f),
-                text = stringResource(R.string.dublin_text),
-                color = GrayScale400,
-            )
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(R.string.dublin_text),
+                    color = GrayScale400,
+                )
+            }
         }
 
         Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
 
-        Icon(
-            modifier = Modifier
-                .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                .background(Color.White)
-                .padding(dimensionResource(R.dimen.padding_medium))
-                .size(dimensionResource(R.dimen.icon_size_standard)),
-            painter = painterResource(id = R.drawable.ic_filter_border),
-            contentDescription = null,
-            tint = DeepOrange,
-        )
+        Surface(shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)) {
+            Icon(
+                modifier = Modifier
+                    .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
+                    .background(Color.White)
+                    .padding(dimensionResource(R.dimen.padding_medium))
+                    .size(dimensionResource(R.dimen.icon_size_standard)),
+                painter = painterResource(id = R.drawable.ic_filter_border),
+                contentDescription = null,
+                tint = DeepOrange,
+            )
+        }
     }
 
 }

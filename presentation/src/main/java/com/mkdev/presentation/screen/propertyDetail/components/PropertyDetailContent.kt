@@ -40,7 +40,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.CoilImage
 import com.mkdev.presentation.common.components.ExpandableTextView
@@ -65,7 +64,10 @@ internal fun PropertyDetailContent(
             TopAppBar(
                 modifier = Modifier.fillMaxWidth(),
                 title = {
-                    TopAppBarTitle(title = "Hostel Details", textAlign = TextAlign.Center)
+                    TopAppBarTitle(
+                        title = stringResource(R.string.hostel_details),
+                        textAlign = TextAlign.Center
+                    )
                 },
                 navigationIcon = {
                     TopAppBarBackButton(
@@ -84,8 +86,7 @@ internal fun PropertyDetailContent(
                     .padding(horizontal = dimensionResource(R.dimen.padding_standard)),
             ) {
                 HeaderImageView(
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     property = property,
                 )
 
@@ -99,14 +100,14 @@ internal fun PropertyDetailContent(
                 HorizontalDivider(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = dimensionResource(R.dimen.padding_standard)),
                     thickness = dimensionResource(R.dimen.divider_thickness),
                     color = GrayScale200,
                 )
 
                 Text(
                     modifier = Modifier.wrapContentSize(),
-                    text = "Photos",
+                    text = stringResource(R.string.photos),
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
                     fontSize = dimensionResource(R.dimen.text_size_default).textSp,
@@ -121,14 +122,14 @@ internal fun PropertyDetailContent(
 
                 Text(
                     modifier = Modifier.wrapContentSize(),
-                    text = "Description",
+                    text = stringResource(R.string.description),
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
                     fontSize = dimensionResource(R.dimen.text_size_default).textSp,
                 )
 
                 ExpandableTextView(
-                    fontSize = 12.sp,
+                    fontSize = dimensionResource(R.dimen.text_size_small).textSp,
                     text = property.overview,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -137,7 +138,7 @@ internal fun PropertyDetailContent(
 
                 Text(
                     modifier = Modifier.wrapContentSize(),
-                    text = "Features",
+                    text = stringResource(R.string.features),
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
                     fontSize = dimensionResource(R.dimen.text_size_default).textSp,
@@ -161,7 +162,7 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
                 imageUrl = item.getImageUrl(),
                 modifier = Modifier
                     .size(110.dp)
-                    .padding(4.dp)
+                    .padding(dimensionResource(R.dimen.padding_2x_small))
                     .clip(
                         RoundedCornerShape(
                             size = dimensionResource(id = R.dimen.corner_radius_small)

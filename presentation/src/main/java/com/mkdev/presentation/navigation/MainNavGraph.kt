@@ -14,7 +14,7 @@ fun MainNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MainNavRoute.PropertyDetail.path
+        startDestination = MainNavRoute.PropertyList.path
     ) {
         addPropertyListScreen(
             navController = navController,

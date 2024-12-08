@@ -103,30 +103,6 @@ internal fun PropertyNormalItem(
 
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        modifier = Modifier.size(dimensionResource(R.dimen.icon_size_x_small)),
-                        painter = painterResource(id = R.drawable.ic_location),
-                        contentDescription = null,
-                        tint = Amber,
-                    )
-
-                    Text(
-                        modifier = Modifier
-                            .wrapContentSize()
-                            .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
-                        text = "Location",
-                        maxLines = 1,
-                        fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
-                    )
-                }
-
-
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
-
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Row(
                         modifier = Modifier.weight(1f),

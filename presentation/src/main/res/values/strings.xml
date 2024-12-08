@@ -11,4 +11,9 @@
     <string name="facility_fitness_center">Fitness Center</string>
     <string name="facility_day_and_night_open">24-hours Open</string>
     <string name="facility_bathroom">Bathroom</string>
+    <string name="night_text">night</string>
+    <string name="hostel_details">Hostel Details</string>
+    <string name="photos">Photos</string>
+    <string name="description">Description</string>
+    <string name="features">Features</string>
 </resources>
