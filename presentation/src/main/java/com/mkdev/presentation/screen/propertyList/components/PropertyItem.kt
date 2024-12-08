@@ -68,7 +68,7 @@ internal fun PropertyItem(
                     ),
                 imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
                     .orEmpty(),
-                contentScale = ContentScale.FillBounds
+                contentScale = ContentScale.None
             )
 
             Column(modifier = Modifier.fillMaxWidth()) {
@@ -96,7 +96,7 @@ internal fun PropertyItem(
                         modifier = Modifier
                             .wrapContentSize()
                             .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
-                        text = "Location",
+                        text = property.address1,
                         maxLines = 1,
                         fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
                     )
@@ -120,7 +120,7 @@ internal fun PropertyItem(
                             modifier = Modifier
                                 .wrapContentSize()
                                 .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
-                            text = "${property.overallRating.overall} (${property.overallRating.numberOfRatings} review)",
+                            text = property.overallRating.overall.toString(),
                             maxLines = 1,
                             fontSize = dimensionResource(R.dimen.text_size_small).textSp,
                         )
@@ -128,10 +128,10 @@ internal fun PropertyItem(
 
                     Text(
                         modifier = Modifier
-                            .weight(1f)
+                            .fillMaxWidth()
                             .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
                         textAlign = TextAlign.End,
-                        text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value} / night",
+                        text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value}/night",
                         maxLines = 1,
                         fontWeight = FontWeight.Bold,
                         fontSize = dimensionResource(R.dimen.text_size_small).textSp,

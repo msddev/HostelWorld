@@ -57,7 +57,7 @@ internal fun PropertyListContent(
                                 .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                             property = property,
                             onItemClick = {
-
+                                onItemClick.invoke(property)
                             },
                         )
                     }
@@ -70,7 +70,7 @@ internal fun PropertyListContent(
                             .padding(horizontal = dimensionResource(R.dimen.padding_small)),
                         property = property,
                         onItemClick = {
-
+                            onItemClick.invoke(property)
                         },
                     )
                 }

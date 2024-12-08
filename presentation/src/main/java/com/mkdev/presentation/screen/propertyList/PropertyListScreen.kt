@@ -1,9 +1,11 @@
 package com.mkdev.presentation.screen.propertyList
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mkdev.presentation.R
@@ -16,7 +18,7 @@ import com.mkdev.presentation.viewmodel.SharedViewModel
 @Composable
 internal fun PropertyListScreen(
     viewModel: PropertyListViewModel = hiltViewModel(),
-    sharedViewModel: SharedViewModel = hiltViewModel(),
+    sharedViewModel: SharedViewModel = hiltViewModel(LocalContext.current as ComponentActivity),
     navigateToPropertyDetailScreen: () -> Unit,
 ) {
 

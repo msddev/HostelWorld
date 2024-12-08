@@ -255,7 +255,7 @@ private fun HeaderImageView(modifier: Modifier, property: PropertyModel) {
             .orEmpty(),
         modifier = modifier
             .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
-        contentScale = ContentScale.FillWidth
+        contentScale = ContentScale.None
     )
 }
 
