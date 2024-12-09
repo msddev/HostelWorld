@@ -27,7 +27,7 @@ internal fun SplashScreen(
     navigateToPropertyListScreen: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        delay(3000)
+        delay(2000)
         navigateToPropertyListScreen()
     }
 

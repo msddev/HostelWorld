@@ -2,6 +2,7 @@ package com.mkdev.hostelworld.di
 
 import android.content.Context
 import com.mkdev.data.datasource.remote.api.ExchangeRatesApi
+import com.mkdev.data.datasource.remote.api.NetworkStatsApi
 import com.mkdev.data.datasource.remote.api.PropertyApi
 import com.mkdev.hostelworld.BuildConfig
 import com.mkdev.hostelworld.utils.ApiConfigs
@@ -75,4 +76,10 @@ class NetworkModule {
     fun provideExchangeRatesApi(
         retrofit: Retrofit,
     ): ExchangeRatesApi = retrofit.create(ExchangeRatesApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideNetworkStatsApi(
+        retrofit: Retrofit,
+    ): NetworkStatsApi = retrofit.create(NetworkStatsApi::class.java)
 }
