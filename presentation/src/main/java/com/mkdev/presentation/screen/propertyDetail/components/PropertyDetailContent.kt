@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -56,6 +57,7 @@ import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.model.property.FacilityListModel
 import com.mkdev.presentation.model.property.ImagesGalleryModel
+import com.mkdev.presentation.model.property.PricePerNightModel
 import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarBackButton
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarTitle
@@ -68,6 +70,7 @@ internal fun PropertyDetailContent(
     property: PropertyModel,
     onCurrencyFilterClick: () -> Unit,
     onBackClick: () -> Unit,
+    onReservedClick: () -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
@@ -179,59 +182,68 @@ internal fun PropertyDetailContent(
                     Spacer(modifier = Modifier.height(120.dp))
                 }
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
-                        .padding(dimensionResource(R.dimen.padding_small))
-                        .background(
-                            Color.Black,
-                            shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large))
-                        )
-                        .padding(horizontal = dimensionResource(R.dimen.padding_small)),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            modifier = Modifier.wrapContentSize(),
-                            text = stringResource(R.string.price),
-                            maxLines = 1,
-                            color = Color.White,
-                            fontSize = dimensionResource(R.dimen.text_size_small).textSp,
-                        )
-                        Text(
-                            modifier = Modifier.wrapContentSize(),
-                            text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value}/night",
-                            maxLines = 1,
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = dimensionResource(R.dimen.text_size_default).textSp,
-                        )
-                    }
-
-                    Button(
-                        modifier = Modifier
-                            .weight(1f)
-                            .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large)))
-                            .padding(dimensionResource(R.dimen.padding_small)),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White,
-                            contentColor = Color.Black
-                        ),
-                        onClick = {
-
-                        },
-                    ) {
-                        Text(
-                            text = stringResource(R.string.reserve_now),
-                            fontWeight = FontWeight.Bold,
-                        )
-                    }
-                }
+                ReservedSection(
+                    lowestPricePerNight = property.lowestPricePerNight,
+                    onReservedClick = onReservedClick
+                )
             }
         }
     )
+}
+
+@Composable
+private fun BoxScope.ReservedSection(
+    lowestPricePerNight: PricePerNightModel,
+    onReservedClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .align(Alignment.BottomCenter)
+            .padding(dimensionResource(R.dimen.padding_small))
+            .background(
+                Color.Black,
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large))
+            )
+            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                modifier = Modifier.wrapContentSize(),
+                text = stringResource(R.string.price),
+                maxLines = 1,
+                color = Color.White,
+                fontSize = dimensionResource(R.dimen.text_size_small).textSp,
+            )
+            Text(
+                modifier = Modifier.wrapContentSize(),
+                text = "${lowestPricePerNight.getCurrencySymbol()}${lowestPricePerNight.value}/night",
+                maxLines = 1,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+            )
+        }
+
+        Button(
+            modifier = Modifier
+                .weight(1f)
+                .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large)))
+                .padding(dimensionResource(R.dimen.padding_small)),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.White,
+                contentColor = Color.Black
+            ),
+            onClick = onReservedClick,
+        ) {
+            Text(
+                text = stringResource(R.string.reserve_now),
+                fontWeight = FontWeight.Bold,
+            )
+        }
+    }
 }
 
 @Composable
@@ -356,7 +368,8 @@ private fun ScreenPreview() {
                 .padding(dimensionResource(id = R.dimen.padding_x_small)),
             property = mockPropertyItem,
             onCurrencyFilterClick = {},
-            onBackClick = {}
+            onBackClick = {},
+            onReservedClick = {}
         )
     }
 }

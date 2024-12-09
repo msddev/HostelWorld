@@ -46,6 +46,7 @@ internal fun PropertyListScreen(
                 normalProperties = normalProperties,
                 onItemClick = { selectedProperty ->
                     sharedViewModel.setSelectedProperty(selectedProperty)
+                    sharedViewModel.setPropertyBasePrice(selectedProperty.lowestPricePerNight)
                     navigateToPropertyDetailScreen.invoke()
                 }
             )

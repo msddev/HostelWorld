@@ -20,6 +20,7 @@ import com.mkdev.presentation.screen.propertyDetail.components.ExchangeRateDialo
 import com.mkdev.presentation.screen.propertyDetail.components.PropertyDetailContent
 import com.mkdev.presentation.viewmodel.PropertyDetailViewModel
 import com.mkdev.presentation.viewmodel.SharedViewModel
+import java.util.Locale
 
 @Composable
 internal fun PropertyDetailScreen(
@@ -39,7 +40,10 @@ internal fun PropertyDetailScreen(
                 exchangeRateDialogVisibility = true
                 propertyDetailViewModel.fetchExchangeRates()
             },
-            onBackClick = onBackClick
+            onBackClick = onBackClick,
+            onReservedClick = {
+                // TODO: there is no implementation!
+            }
         )
     } ?: run {
         ErrorColumn(
@@ -78,16 +82,40 @@ internal fun PropertyDetailScreen(
         onCurrencySelected = { currencyCode, exchangeRate ->
             exchangeRateDialogVisibility = false
 
-            val updatedProperty = sharedViewModel.selectedProperty.value?.copy(
-                lowestPricePerNight = PricePerNightModel(
-                    currency = currencyCode,
-                    value = exchangeRate.toString()
+            val targetPrice = PricePerNightModel(currencyCode, exchangeRate.toString())
+
+            sharedViewModel.getPropertyBasePrice()?.let { basePrice ->
+                val updatedPrice = updateCurrencyValue(
+                    basePrice = basePrice,
+                    targetPrice = targetPrice
                 )
-            )
-            sharedViewModel.setSelectedProperty(updatedProperty!!)
+
+                val updatedProperty = sharedViewModel.selectedProperty.value?.copy(
+                    lowestPricePerNight = PricePerNightModel(
+                        currency = updatedPrice.currency,
+                        value = updatedPrice.value
+                    )
+                )
+                sharedViewModel.setSelectedProperty(updatedProperty!!)
+            }
         },
         onDismiss = {
             exchangeRateDialogVisibility = false
         }
+    )
+}
+
+private fun updateCurrencyValue(
+    basePrice: PricePerNightModel,
+    targetPrice: PricePerNightModel
+): PricePerNightModel {
+    val basePriceValue = basePrice.value.toDoubleOrNull() ?: 0.0
+    val targetPriceValue = targetPrice.value.toDoubleOrNull() ?: 0.0
+
+    val newPriceValue = basePriceValue * targetPriceValue
+
+    return PricePerNightModel(
+        currency = targetPrice.currency,
+        value = String.format(locale = Locale.US, "%.2f", newPriceValue).toString()
     )
 }
