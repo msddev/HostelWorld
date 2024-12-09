@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MainNavGraph(
                         navController = navController,
+                        activity = this@MainActivity
                     )
                 }
             }

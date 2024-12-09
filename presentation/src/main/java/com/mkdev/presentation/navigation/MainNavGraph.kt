@@ -1,5 +1,6 @@
 package com.mkdev.presentation.navigation
 
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
@@ -13,6 +14,7 @@ import com.mkdev.presentation.screen.splash.SplashScreen
 @Composable
 fun MainNavGraph(
     navController: NavHostController,
+    activity: ComponentActivity,
 ) {
     NavHost(
         navController = navController,
@@ -25,6 +27,7 @@ fun MainNavGraph(
         addPropertyListScreen(
             navController = navController,
             navGraphBuilder = this,
+            activity = activity,
         )
 
         addPropertyDetailScreen(
@@ -52,9 +55,12 @@ private fun addSplashScreen(
 private fun addPropertyListScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder,
+    activity: ComponentActivity
 ) {
     navGraphBuilder.composable(route = MainNavRoute.PropertyList.path) {
-        BackHandler(true) {}
+        BackHandler(true) {
+            activity.finish()
+        }
 
         PropertyListScreen(
             navigateToPropertyDetailScreen = {
