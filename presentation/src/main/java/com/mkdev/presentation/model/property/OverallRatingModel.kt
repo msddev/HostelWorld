@@ -1,4 +1,4 @@
-package com.mkdev.presentation.model
+package com.mkdev.presentation.model.property
 
 import java.util.Locale
 

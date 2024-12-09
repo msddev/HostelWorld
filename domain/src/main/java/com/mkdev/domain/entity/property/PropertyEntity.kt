@@ -1,4 +1,4 @@
-package com.mkdev.domain.entity
+package com.mkdev.domain.entity.property
 
 
 data class PropertyEntity(

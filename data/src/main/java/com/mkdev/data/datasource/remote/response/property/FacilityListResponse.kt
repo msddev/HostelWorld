@@ -1,4 +1,4 @@
-package com.mkdev.data.datasource.remote.response
+package com.mkdev.data.datasource.remote.response.property
 
 
 import com.google.gson.annotations.SerializedName

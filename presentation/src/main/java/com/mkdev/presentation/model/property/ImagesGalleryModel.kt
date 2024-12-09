@@ -1,4 +1,4 @@
-package com.mkdev.presentation.model
+package com.mkdev.presentation.model.property
 
 internal data class ImagesGalleryModel(
     val prefix: String,

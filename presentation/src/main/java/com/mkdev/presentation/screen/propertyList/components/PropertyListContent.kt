@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mkdev.presentation.R
 import com.mkdev.presentation.mockData.mockPropertyList
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.presentation.model.property.PropertyModel
 
 @Composable
 internal fun PropertyListContent(

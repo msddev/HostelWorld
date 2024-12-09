@@ -17,12 +17,12 @@ import com.mkdev.presentation.viewmodel.SharedViewModel
 
 @Composable
 internal fun PropertyListScreen(
-    viewModel: PropertyListViewModel = hiltViewModel(),
+    propertyListViewModel: PropertyListViewModel = hiltViewModel(),
     sharedViewModel: SharedViewModel = hiltViewModel(LocalContext.current as ComponentActivity),
     navigateToPropertyDetailScreen: () -> Unit,
 ) {
 
-    when (val uiState = viewModel.properties.observeAsState().value) {
+    when (val uiState = propertyListViewModel.properties.observeAsState().value) {
         is PropertyListUiState.Loading, null -> {
             LoadingColumn(stringResource(id = R.string.searching_text))
         }
@@ -32,7 +32,7 @@ internal fun PropertyListScreen(
                 ErrorColumn(
                     message = stringResource(R.string.no_results_found),
                     onAction = {
-                        viewModel.fetchPropertyList()
+                        propertyListViewModel.fetchPropertyList()
                     }
                 )
                 return
@@ -56,7 +56,7 @@ internal fun PropertyListScreen(
                 message = uiState.throwable.message
                     ?: stringResource(R.string.oops_something_went_wrong),
                 onAction = {
-                    viewModel.fetchPropertyList()
+                    propertyListViewModel.fetchPropertyList()
                 }
             )
         }

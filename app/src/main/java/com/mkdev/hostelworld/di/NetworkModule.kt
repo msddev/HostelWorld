@@ -1,6 +1,7 @@
 package com.mkdev.hostelworld.di
 
 import android.content.Context
+import com.mkdev.data.datasource.remote.api.ExchangeRatesApi
 import com.mkdev.data.datasource.remote.api.PropertyApi
 import com.mkdev.hostelworld.BuildConfig
 import com.mkdev.hostelworld.utils.ApiConfigs
@@ -16,7 +17,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-import kotlin.jvm.java
 import kotlin.time.toJavaDuration
 
 @Module
@@ -56,12 +56,23 @@ class NetworkModule {
     fun provideRetrofitApiService(
         okHttpClient: OkHttpClient,
         converterFactory: Converter.Factory,
-    ): PropertyApi =
+    ): Retrofit =
         Retrofit.Builder()
             .baseUrl(ApiConfigs.BASE_URL)
             .addConverterFactory(converterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
-            .create(PropertyApi::class.java)
+
+    @Singleton
+    @Provides
+    fun providePropertyApiService(
+        retrofit: Retrofit,
+    ): PropertyApi = retrofit.create(PropertyApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideExchangeRatesApi(
+        retrofit: Retrofit,
+    ): ExchangeRatesApi = retrofit.create(ExchangeRatesApi::class.java)
 }

@@ -33,7 +33,7 @@ import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.theme.*
 
 @Composable

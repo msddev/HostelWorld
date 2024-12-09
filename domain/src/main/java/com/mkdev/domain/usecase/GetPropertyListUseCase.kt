@@ -1,6 +1,6 @@
 package com.mkdev.domain.usecase
 
-import com.mkdev.domain.entity.PropertyEntity
+import com.mkdev.domain.entity.property.PropertyEntity
 import com.mkdev.domain.repository.PropertyRepository
 import io.reactivex.Single
 

@@ -1,20 +1,20 @@
 package com.mkdev.data.datasource.mapper
 
-import com.mkdev.data.datasource.remote.response.DistanceResponse
-import com.mkdev.data.datasource.remote.response.FacilityListResponse
-import com.mkdev.data.datasource.remote.response.FacilityResponse
-import com.mkdev.data.datasource.remote.response.ImagesGalleryResponse
-import com.mkdev.data.datasource.remote.response.OverallRatingResponse
-import com.mkdev.data.datasource.remote.response.PricePerNightResponse
-import com.mkdev.data.datasource.remote.response.PropertyListResponse
-import com.mkdev.data.datasource.remote.response.PropertyResponse
-import com.mkdev.domain.entity.DistanceEntity
-import com.mkdev.domain.entity.FacilityEntity
-import com.mkdev.domain.entity.FacilityListEntity
-import com.mkdev.domain.entity.ImagesGalleryEntity
-import com.mkdev.domain.entity.OverallRatingEntity
-import com.mkdev.domain.entity.PricePerNightEntity
-import com.mkdev.domain.entity.PropertyEntity
+import com.mkdev.data.datasource.remote.response.property.DistanceResponse
+import com.mkdev.data.datasource.remote.response.property.FacilityListResponse
+import com.mkdev.data.datasource.remote.response.property.FacilityResponse
+import com.mkdev.data.datasource.remote.response.property.ImagesGalleryResponse
+import com.mkdev.data.datasource.remote.response.property.OverallRatingResponse
+import com.mkdev.data.datasource.remote.response.property.PricePerNightResponse
+import com.mkdev.data.datasource.remote.response.property.PropertyListResponse
+import com.mkdev.data.datasource.remote.response.property.PropertyResponse
+import com.mkdev.domain.entity.property.DistanceEntity
+import com.mkdev.domain.entity.property.FacilityEntity
+import com.mkdev.domain.entity.property.FacilityListEntity
+import com.mkdev.domain.entity.property.ImagesGalleryEntity
+import com.mkdev.domain.entity.property.OverallRatingEntity
+import com.mkdev.domain.entity.property.PricePerNightEntity
+import com.mkdev.domain.entity.property.PropertyEntity
 
 internal fun PropertyListResponse.toPropertyEntities(): List<PropertyEntity> {
     return this.properties.map { it.toPropertyEntity() }

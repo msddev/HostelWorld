@@ -2,7 +2,7 @@ package com.mkdev.data.repository
 
 import com.mkdev.data.datasource.mapper.toPropertyEntities
 import com.mkdev.data.datasource.remote.api.PropertyApi
-import com.mkdev.domain.entity.PropertyEntity
+import com.mkdev.domain.entity.property.PropertyEntity
 import com.mkdev.domain.repository.PropertyRepository
 import io.reactivex.Single
 

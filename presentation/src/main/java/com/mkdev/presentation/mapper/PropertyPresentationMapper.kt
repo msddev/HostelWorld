@@ -1,19 +1,19 @@
 package com.mkdev.presentation.mapper
 
-import com.mkdev.domain.entity.DistanceEntity
-import com.mkdev.domain.entity.FacilityEntity
-import com.mkdev.domain.entity.FacilityListEntity
-import com.mkdev.domain.entity.ImagesGalleryEntity
-import com.mkdev.domain.entity.OverallRatingEntity
-import com.mkdev.domain.entity.PricePerNightEntity
-import com.mkdev.domain.entity.PropertyEntity
-import com.mkdev.presentation.model.DistanceModel
-import com.mkdev.presentation.model.FacilityListModel
-import com.mkdev.presentation.model.FacilityModel
-import com.mkdev.presentation.model.ImagesGalleryModel
-import com.mkdev.presentation.model.OverallRatingModel
-import com.mkdev.presentation.model.PricePerNightModel
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.domain.entity.property.DistanceEntity
+import com.mkdev.domain.entity.property.FacilityEntity
+import com.mkdev.domain.entity.property.FacilityListEntity
+import com.mkdev.domain.entity.property.ImagesGalleryEntity
+import com.mkdev.domain.entity.property.OverallRatingEntity
+import com.mkdev.domain.entity.property.PricePerNightEntity
+import com.mkdev.domain.entity.property.PropertyEntity
+import com.mkdev.presentation.model.property.DistanceModel
+import com.mkdev.presentation.model.property.FacilityListModel
+import com.mkdev.presentation.model.property.FacilityModel
+import com.mkdev.presentation.model.property.ImagesGalleryModel
+import com.mkdev.presentation.model.property.OverallRatingModel
+import com.mkdev.presentation.model.property.PricePerNightModel
+import com.mkdev.presentation.model.property.PropertyModel
 
 internal fun PropertyEntity.toPropertyModel(): PropertyModel {
     return PropertyModel(

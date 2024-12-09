@@ -1,12 +1,12 @@
 package com.mkdev.presentation.mockData
 
-import com.mkdev.presentation.model.DistanceModel
-import com.mkdev.presentation.model.FacilityListModel
-import com.mkdev.presentation.model.FacilityModel
-import com.mkdev.presentation.model.ImagesGalleryModel
-import com.mkdev.presentation.model.OverallRatingModel
-import com.mkdev.presentation.model.PricePerNightModel
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.presentation.model.property.DistanceModel
+import com.mkdev.presentation.model.property.FacilityListModel
+import com.mkdev.presentation.model.property.FacilityModel
+import com.mkdev.presentation.model.property.ImagesGalleryModel
+import com.mkdev.presentation.model.property.OverallRatingModel
+import com.mkdev.presentation.model.property.PricePerNightModel
+import com.mkdev.presentation.model.property.PropertyModel
 
 
 internal fun mockOverallRatingModel() = OverallRatingModel(

@@ -1,6 +1,6 @@
 package com.mkdev.data.datasource.remote.api
 
-import com.mkdev.data.datasource.remote.response.PropertyListResponse
+import com.mkdev.data.datasource.remote.response.property.PropertyListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 

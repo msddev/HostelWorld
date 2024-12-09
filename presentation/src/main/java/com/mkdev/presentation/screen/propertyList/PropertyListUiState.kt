@@ -1,6 +1,6 @@
 package com.mkdev.presentation.screen.propertyList
 
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.presentation.model.property.PropertyModel
 
 internal sealed class PropertyListUiState {
     object Loading : PropertyListUiState()

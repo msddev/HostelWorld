@@ -23,59 +23,39 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mkdev.presentation.R
-import com.mkdev.presentation.theme.*
+import com.mkdev.presentation.theme.GrayScale300
+import com.mkdev.presentation.theme.GrayScale400
 import com.mkdev.presentation.theme.HostelWorldTheme
 
 @Composable
 internal fun SearchBarView(
     modifier: Modifier,
 ) {
-    Row(
+    Surface(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
+        shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)
     ) {
-        Surface(
-            modifier = Modifier.weight(1f),
-            shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)
+        Row(
+            modifier = Modifier
+                .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
+                .background(Color.White)
+                .padding(dimensionResource(R.dimen.padding_medium)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
         ) {
-            Row(
-                modifier = Modifier
-                    .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                    .background(Color.White)
-                    .padding(dimensionResource(R.dimen.padding_medium)),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-            ) {
-                Icon(
-                    modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
-                    painter = painterResource(id = R.drawable.ic_search_border),
-                    contentDescription = null,
-                    tint = GrayScale300,
-                )
-
-                Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
-
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = stringResource(R.string.dublin_text),
-                    color = GrayScale400,
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
-
-        Surface(shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)) {
             Icon(
-                modifier = Modifier
-                    .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
-                    .background(Color.White)
-                    .padding(dimensionResource(R.dimen.padding_medium))
-                    .size(dimensionResource(R.dimen.icon_size_standard)),
-                painter = painterResource(id = R.drawable.ic_filter_border),
+                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
+                painter = painterResource(id = R.drawable.ic_search_border),
                 contentDescription = null,
-                tint = DeepOrange,
+                tint = GrayScale300,
+            )
+
+            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
+
+            Text(
+                modifier = Modifier.weight(1f),
+                text = stringResource(R.string.dublin_text),
+                color = GrayScale400,
             )
         }
     }

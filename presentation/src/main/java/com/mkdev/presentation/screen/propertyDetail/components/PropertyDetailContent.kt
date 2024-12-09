@@ -54,9 +54,9 @@ import com.mkdev.presentation.common.components.ExpandableTextView
 import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
-import com.mkdev.presentation.model.FacilityListModel
-import com.mkdev.presentation.model.ImagesGalleryModel
-import com.mkdev.presentation.model.PropertyModel
+import com.mkdev.presentation.model.property.FacilityListModel
+import com.mkdev.presentation.model.property.ImagesGalleryModel
+import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarBackButton
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarTitle
 import com.mkdev.presentation.theme.*
@@ -66,6 +66,7 @@ import com.mkdev.presentation.theme.*
 internal fun PropertyDetailContent(
     modifier: Modifier,
     property: PropertyModel,
+    onCurrencyFilterClick: () -> Unit,
     onBackClick: () -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
@@ -91,9 +92,7 @@ internal fun PropertyDetailContent(
                     )
                 },
                 actions = {
-                    IconButton(onClick = {
-
-                    }) {
+                    IconButton(onClick = onCurrencyFilterClick) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_filter_border),
                             tint = Color.Black,
@@ -338,12 +337,12 @@ private fun ColumnScope.PropertyNameAndLocationView(modifier: Modifier, property
 @Composable
 private fun HeaderImageView(modifier: Modifier, property: PropertyModel) {
     GlideImageLoader(
+        modifier = modifier
+            .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
         imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)
             ?.getImageUrl()
             .orEmpty(),
-        modifier = modifier
-            .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
-        contentScale = ContentScale.Crop
+        contentScale = ContentScale.FillWidth
     )
 }
 
@@ -356,9 +355,8 @@ private fun ScreenPreview() {
                 .fillMaxSize()
                 .padding(dimensionResource(id = R.dimen.padding_x_small)),
             property = mockPropertyItem,
-            onBackClick = {
-
-            }
+            onCurrencyFilterClick = {},
+            onBackClick = {}
         )
     }
 }
