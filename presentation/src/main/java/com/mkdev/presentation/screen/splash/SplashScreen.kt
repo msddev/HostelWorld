@@ -91,7 +91,3 @@ internal fun SplashScreen(
         }
     }
 }
-
-private fun navigateToPropertyListScreen() {
-
-}
