@@ -17,6 +17,7 @@ internal fun <T> Single<T>.trackNetworkStats(
         val duration = System.currentTimeMillis() - startTime
         repository.trackNetworkStats(action, duration)
             .subscribeOn(Schedulers.io())
+            .onErrorComplete()
             .subscribe()
     }
 }
@@ -31,6 +32,7 @@ internal fun Completable.trackNetworkStats(
         val duration = System.currentTimeMillis() - startTime
         repository.trackNetworkStats(action, duration)
             .subscribeOn(Schedulers.io())
+            .onErrorComplete()
             .subscribe()
     }
 }
@@ -45,6 +47,7 @@ internal fun <T> Observable<T>.trackNetworkStats(
         val duration = System.currentTimeMillis() - startTime
         repository.trackNetworkStats(action, duration)
             .subscribeOn(Schedulers.io())
+            .onErrorComplete()
             .subscribe()
     }
 }
@@ -59,6 +62,7 @@ internal fun <T> Maybe<T>.trackNetworkStats(
         val duration = System.currentTimeMillis() - startTime
         repository.trackNetworkStats(action, duration)
             .subscribeOn(Schedulers.io())
+            .onErrorComplete()
             .subscribe()
     }
 }
