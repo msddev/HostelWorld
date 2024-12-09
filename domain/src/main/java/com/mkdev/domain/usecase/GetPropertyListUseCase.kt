@@ -17,7 +17,7 @@ class GetPropertyListUseCase(
             .doOnSuccess {
                 val duration = System.currentTimeMillis() - startTime
                 networkStatsRepository.trackNetworkStats(
-                    action = NetworkStatsActionKeys.LOAD_LIST,
+                    action = NetworkStatsActionKeys.LOAD_PROPERTIES,
                     duration = duration
                 ).subscribe() // Subscribe to trigger the tracking
             }

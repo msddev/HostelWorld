@@ -16,7 +16,7 @@ class GetExchangeRatesUseCase(
             .doOnSuccess {
                 val duration = System.currentTimeMillis() - startTime
                 networkStatsRepository.trackNetworkStats(
-                    action = NetworkStatsActionKeys.LOAD_EXCHANGE,
+                    action = NetworkStatsActionKeys.LOAD_RATES,
                     duration = duration
                 ).subscribe()
             }
