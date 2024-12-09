@@ -199,7 +199,7 @@ private fun PropertyNameAndLocationView(modifier: Modifier, property: PropertyMo
     Text(
         modifier = modifier,
         text = property.name,
-        maxLines = 1,
+        maxLines = 1,X
         fontWeight = FontWeight.Bold,
         fontSize = dimensionResource(R.dimen.text_size_large).textSp,
     )
