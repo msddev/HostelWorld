@@ -16,4 +16,6 @@
     <string name="price">Price</string>
     <string name="reserve_now">Reserve Now</string>
     <string name="currency_exchange">Currency Exchange</string>
+    <string name="find_the_best_place_to_stay_for_you">Find the best place to stay for you.</string>
+    <string name="good_day">Good day,</string>
 </resources>
