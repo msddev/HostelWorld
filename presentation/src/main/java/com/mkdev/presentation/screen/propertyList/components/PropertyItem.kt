@@ -72,7 +72,7 @@ internal fun PropertyItem(
                     text = property.name,
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
-                    fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
+                    fontSize = dimensionResource(R.dimen.text_size_default).textSp,
                 )
 
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
@@ -129,8 +129,9 @@ internal fun PropertyItem(
                         textAlign = TextAlign.End,
                         text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value}/night",
                         maxLines = 1,
+                        color = Green,
                         fontWeight = FontWeight.Bold,
-                        fontSize = dimensionResource(R.dimen.text_size_small).textSp,
+                        fontSize = dimensionResource(R.dimen.text_size_default).textSp,
                     )
                 }
             }

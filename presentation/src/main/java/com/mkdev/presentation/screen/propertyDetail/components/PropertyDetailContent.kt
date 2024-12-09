@@ -45,6 +45,7 @@ import com.mkdev.presentation.common.components.ExpandableTextView
 import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.mockData.mockPropertyItem
+import com.mkdev.presentation.model.FacilityListModel
 import com.mkdev.presentation.model.ImagesGalleryModel
 import com.mkdev.presentation.model.PropertyModel
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarBackButton
@@ -144,7 +145,7 @@ internal fun PropertyDetailContent(
                     fontSize = dimensionResource(R.dimen.text_size_default).textSp,
                 )
 
-                FacilitiesView(modifier = Modifier.fillMaxWidth())
+                FacilitiesView(modifier = Modifier.fillMaxWidth(), facilities = property.facilities)
 
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
             }
@@ -176,39 +177,20 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FacilitiesView(modifier: Modifier) {
+private fun FacilitiesView(modifier: Modifier, facilities: List<FacilityListModel>) {
     FlowRow(
         modifier = modifier,
-        horizontalArrangement = Arrangement.Start,
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_2x_small)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_2x_small))
     ) {
-        ChipItemView(
-            text = stringResource(R.string.facility_wi_fi),
-            icon = painterResource(id = R.drawable.ic_wi_fi),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_swimming_pool),
-            icon = painterResource(id = R.drawable.ic_swimming_pool),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_restaurant),
-            icon = painterResource(id = R.drawable.ic_restaurant),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_parking),
-            icon = painterResource(id = R.drawable.ic_parking),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_bathroom),
-            icon = painterResource(id = R.drawable.ic_bedroom),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_elevator),
-            icon = painterResource(id = R.drawable.ic_elevator),
-        )
-        ChipItemView(
-            text = stringResource(R.string.facility_fitness_center),
-            icon = painterResource(id = R.drawable.ic_fitness_center),
-        )
+
+        facilities.forEach { category ->
+            category.facilities.forEach { facility ->
+                ChipItemView(
+                    text = facility.name,
+                )
+            }
+        }
     }
 }
 

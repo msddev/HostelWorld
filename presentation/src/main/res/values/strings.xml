@@ -3,14 +3,6 @@
     <string name="dublin_text">Dublin</string>
 
     <string name="facility_swimming_pool">Swimming Pool</string>
-    <string name="facility_wi_fi">WiFi</string>
-    <string name="facility_restaurant">Restaurant</string>
-    <string name="facility_parking">Parking</string>
-    <string name="facility_meeting_room">Meeting Room</string>
-    <string name="facility_elevator">Elevator</string>
-    <string name="facility_fitness_center">Fitness Center</string>
-    <string name="facility_day_and_night_open">24-hours Open</string>
-    <string name="facility_bathroom">Bathroom</string>
     <string name="night_text">night</string>
     <string name="hostel_details">Hostel Details</string>
     <string name="photos">Photos</string>

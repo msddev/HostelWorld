@@ -29,4 +29,5 @@ val GrayScale50: Color = Color(0xFFFAFAFA)
 
 val Amber: Color = Color(0xFFFFC02D)
 val LightGreen: Color = Color(0xFFDCF5E6)
+val Green: Color = Color(0xFF4AAF57)
 
