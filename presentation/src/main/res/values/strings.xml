@@ -13,4 +13,6 @@
     <string name="oops_something_went_wrong">Oops, something went wrong!</string>
     <string name="featured_properties">Featured Properties</string>
     <string name="back_to_home">Back to home</string>
+    <string name="price">Price</string>
+    <string name="reserve_now">Reserve Now</string>
 </resources>
