@@ -35,6 +35,7 @@ abstract class BaseUseCase<T>(
             val duration = System.currentTimeMillis() - startTime
             networkStatsRepository.trackNetworkStats(action, duration)
                 .subscribeOn(Schedulers.io())
+                .onErrorComplete()
                 .subscribe()
         }
     }
