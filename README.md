@@ -31,7 +31,7 @@ The project is organized into four modules:
 *   Handles data-related operations, including server calls and data mapping.
 *   Contains data models, data mappers, repository implementations, and Retrofit API interfaces.
 
-**Note:** A database is not used in this project due to the dynamic nature of property data (price, capacity). Fetching data from the server ensures up-to-date information for the user.
+**Note:** Database is not used in this project due to the dynamic nature of property data (price, capacity). Fetching data from the server ensures up-to-date information for the user.
 
 ### domain
 
@@ -75,11 +75,16 @@ The application features two main screens:
 *   All three layers (data, domain, presentation) are covered with unit tests.
 *   Extensive test cases have been implemented to ensure code correctness and handle various scenarios.
 
-## Conclusion
+## Bonus: Network Stats Tracking
 
-The HostelWorld app demonstrates a well-structured and modern Android development approach using Kotlin, Jetpack Compose, and MVVM architecture. It prioritizes data accuracy, user experience, and code maintainability through its layered architecture, reactive programming, and comprehensive testing.
+As a bonus feature, the project includes network stats tracking. This is achieved by implementing a tracker that sends a GET request to the provided endpoint for each network request.
 
-## Data Persistence
+The request includes two parameters:
+
+*   **`action`:** Describes the type of network request. For example, `load-rates` for exchange rates API requests, `load-properties` for loading property details.
+*   **`duration`:** Represents the time taken for the complete request in milliseconds.
+
+## Further Considerations
 
 I deliberately chose not to use a database in this project because it's crucial to always fetch and display the most up-to-date data from the server. This ensures that users have access to the latest information, especially considering the dynamic nature of property data like pricing and availability.
 
