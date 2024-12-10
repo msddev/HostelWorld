@@ -4,6 +4,29 @@
 
 The HostelWorld app is a mobile application built using Kotlin and Jetpack Compose, showcasing a modern Android development approach. It fetches and displays property listings, allowing users to browse and view detailed information about each property.
 
+## Screenshots
+
+Splash Screen | Property List | Property Detail | Currency Selection |
+---|---|---|---|
+![Splash Screen Screenshot](screenshots/splash_screen.png) | ![Property List Screenshot](screenshots/property_list.png) | ![Property Detail Screenshot](screenshots/property_detail.png) | ![Currency Selection Screenshot](screenshots/currency_selection.png) |
+
+## Project Requirements
+
+**Android Studio:**
+
+*   `compileSdk`: 35
+*   `targetSdk`: 35
+*   `minSdk`: 24
+
+**Build Tools:**
+
+*   `gradle`: 8.9
+*   `kotlin`: 2.1.0
+
+**JDK:**
+
+*   `jdk`: 17
+
 ## Architecture
 
 The project follows the **MVVM (Model-View-ViewModel)** architectural pattern with a modular structure, ensuring a clear separation of concerns and promoting testability.
