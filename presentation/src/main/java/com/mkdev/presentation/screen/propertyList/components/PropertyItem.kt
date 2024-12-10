@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,14 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.GlideImageLoader
-import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.theme.*
 
@@ -39,11 +38,11 @@ internal fun PropertyItem(
     onItemClick: () -> Unit,
 ) {
     Card(
-        modifier = modifier.padding(bottom = 8.dp),
-        shape = RoundedCornerShape(dimensionResource(id = R.dimen.padding_medium)),
-        elevation = CardDefaults.cardElevation(1.dp),
+        modifier = modifier.padding(bottom = Dimens.paddingSmall),
+        shape = RoundedCornerShape(Dimens.cornerRadiusLarge),
+        elevation = CardDefaults.cardElevation(Dimens.cardElevation1dp),
         colors = CardDefaults.cardColors(
-            containerColor = if(property.isFeatured) LightGreen else Color.White, // Card background color
+            containerColor = if (property.isFeatured) Colors.LightGreen else Color.White, // Card background color
             contentColor = Color.Black  // Card content color,e.g.text
         ),
         onClick = onItemClick,
@@ -55,9 +54,9 @@ internal fun PropertyItem(
         ) {
             GlideImageLoader(
                 modifier = Modifier
-                    .size(110.dp)
-                    .padding(dimensionResource(R.dimen.padding_small))
-                    .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
+                    .size(Dimens.propertyImageSize)
+                    .padding(Dimens.paddingSmall)
+                    .clip(RoundedCornerShape(size = Dimens.cornerRadiusSmall)),
                 imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)?.getImageUrl()
                     .orEmpty(),
                 contentScale = ContentScale.Crop
@@ -67,34 +66,33 @@ internal fun PropertyItem(
                 Text(
                     text = property.name,
                     maxLines = 1,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                 )
 
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
+                Spacer(modifier = Modifier.height(Dimens.paddingMedium))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        modifier = Modifier.size(dimensionResource(R.dimen.icon_size_x_small)),
+                        modifier = Modifier.size(Dimens.iconSizeXSmall),
                         painter = painterResource(id = R.drawable.ic_location),
                         contentDescription = null,
-                        tint = Amber,
+                        tint = Colors.Amber,
                     )
 
                     Text(
                         modifier = Modifier
                             .wrapContentSize()
-                            .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                            .padding(horizontal = Dimens.paddingXSmall),
                         text = property.address1,
                         maxLines = 1,
-                        fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
+                        style = MaterialTheme.typography.titleSmall,
                     )
                 }
 
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_2x_small)))
+                Spacer(modifier = Modifier.height(Dimens.paddingMedium))
 
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Row(
@@ -102,32 +100,32 @@ internal fun PropertyItem(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Icon(
-                            modifier = Modifier.size(dimensionResource(R.dimen.icon_size_x_small)),
+                            modifier = Modifier.size(Dimens.iconSizeXSmall),
                             painter = painterResource(id = R.drawable.ic_star),
                             contentDescription = null,
-                            tint = Amber,
+                            tint = Colors.Amber,
                         )
 
                         Text(
                             modifier = Modifier
                                 .wrapContentSize()
-                                .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                                .padding(horizontal = Dimens.paddingXSmall),
                             text = property.overallRating.convertOverallRating(),
                             maxLines = 1,
-                            fontSize = dimensionResource(R.dimen.text_size_small).textSp,
+                            style = MaterialTheme.typography.labelMedium,
                         )
                     }
 
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = dimensionResource(R.dimen.padding_x_small)),
+                            .padding(horizontal = Dimens.paddingXSmall),
                         textAlign = TextAlign.End,
-                        text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value}/night",
+                        text = "${property.lowestPricePerNight.getCurrencySymbol()}${property.lowestPricePerNight.value}/" +
+                                stringResource(R.string.night_text),
                         maxLines = 1,
-                        color = Green,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                        color = Colors.Green,
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     )
                 }
             }

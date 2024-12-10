@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,12 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.mkdev.presentation.R
-import com.mkdev.presentation.common.utils.textSp
+import com.mkdev.presentation.theme.Dimens
 import kotlinx.coroutines.delay
 
 @Composable
@@ -53,24 +53,22 @@ internal fun SplashScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(dimensionResource(R.dimen.padding_small))
+                    .padding(Dimens.paddingSmall)
                     .align(Alignment.CenterStart),
             ) {
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(dimensionResource(R.dimen.padding_small)),
+                        .padding(Dimens.paddingSmall),
                     text = stringResource(R.string.good_day),
-                    fontSize = dimensionResource(R.dimen.text_size_x_large).textSp,
+                    style = MaterialTheme.typography.headlineSmall,
                 )
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+                        .padding(horizontal = Dimens.paddingSmall),
                     text = stringResource(R.string.find_the_best_place_to_stay_for_you),
-                    fontSize = dimensionResource(R.dimen.splash_text_size_title).textSp,
-                    lineHeight = dimensionResource(R.dimen.splash_text_line_height_title).textSp,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 )
             }
 

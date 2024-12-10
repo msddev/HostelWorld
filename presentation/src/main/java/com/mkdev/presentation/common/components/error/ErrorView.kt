@@ -13,11 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.mkdev.presentation.R
-import com.mkdev.presentation.common.utils.textSp
+import com.mkdev.presentation.theme.Dimens
 
 @Composable
 fun ErrorView(
@@ -32,22 +31,22 @@ fun ErrorView(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_standard)),
+            modifier = Modifier.padding(horizontal = Dimens.paddingStandard),
             text = text,
             textAlign = TextAlign.Center,
-            lineHeight = dimensionResource(R.dimen.view_text_height).textSp
+            lineHeight = Dimens.viewTextHeight
         )
 
         Icon(
             imageVector = Icons.Filled.Face,
             contentDescription = null,
             modifier = Modifier
-                .size(dimensionResource(R.dimen.icon_size_x_large))
-                .padding(top = dimensionResource(R.dimen.padding_standard)),
+                .size(Dimens.iconSizeXLarge)
+                .padding(top = Dimens.paddingStandard),
         )
 
         Button(
-            modifier = Modifier.padding(top = dimensionResource(R.dimen.padding_standard)),
+            modifier = Modifier.padding(top = Dimens.paddingStandard),
             onClick = onAction
         ) {
             Text(text = actionButtonText)

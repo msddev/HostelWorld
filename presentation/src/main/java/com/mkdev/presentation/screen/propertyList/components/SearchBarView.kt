@@ -1,11 +1,9 @@
 package com.mkdev.presentation.screen.propertyList.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -18,14 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.mkdev.presentation.R
-import com.mkdev.presentation.theme.GrayScale300
-import com.mkdev.presentation.theme.GrayScale400
-import com.mkdev.presentation.theme.HostelWorldTheme
+import com.mkdev.presentation.theme.Colors
+import com.mkdev.presentation.theme.Dimens
 
 @Composable
 internal fun SearchBarView(
@@ -33,45 +28,29 @@ internal fun SearchBarView(
 ) {
     Surface(
         modifier = modifier,
-        shadowElevation = dimensionResource(R.dimen.card_elevation_1dp)
+        shadowElevation = Dimens.cardElevation1dp
     ) {
         Row(
             modifier = Modifier
-                .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_small)))
+                .clip(shape = RoundedCornerShape(Dimens.cornerRadiusXSmall))
                 .background(Color.White)
-                .padding(dimensionResource(R.dimen.padding_medium)),
+                .padding(Dimens.paddingMedium),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
             Icon(
-                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
+                modifier = Modifier.size(Dimens.iconSizeStandard),
                 painter = painterResource(id = R.drawable.ic_search_border),
                 contentDescription = null,
-                tint = GrayScale300,
+                tint = Colors.GrayScale300,
             )
 
-            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
+            Spacer(modifier = Modifier.width(Dimens.paddingMedium))
 
             Text(
                 modifier = Modifier.weight(1f),
                 text = stringResource(R.string.dublin_text),
-                color = GrayScale400,
-            )
-        }
-    }
-
-}
-
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun ScreenPreview() {
-    HostelWorldTheme {
-        Surface {
-            SearchBarView(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(dimensionResource(id = R.dimen.padding_x_small)),
+                color = Colors.GrayScale400,
             )
         }
     }

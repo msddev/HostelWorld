@@ -11,10 +11,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.mkdev.presentation.R
 import com.mkdev.presentation.model.property.PropertyModel
+import com.mkdev.presentation.theme.Dimens
 
 @Composable
 internal fun PropertyListContent(
@@ -30,7 +30,7 @@ internal fun PropertyListContent(
             SearchBarView(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(dimensionResource(id = R.dimen.padding_x_small)),
+                    .padding(Dimens.paddingXSmall),
             )
         },
         content = { padding ->
@@ -45,7 +45,7 @@ internal fun PropertyListContent(
                         Text(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .padding(dimensionResource(R.dimen.padding_small)),
+                                .padding(Dimens.paddingSmall),
                             text = stringResource(R.string.featured_properties)
                         )
                     }
@@ -53,7 +53,7 @@ internal fun PropertyListContent(
                         PropertyItem(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+                                .padding(horizontal = Dimens.paddingSmall),
                             property = property,
                             onItemClick = {
                                 onItemClick.invoke(property)
@@ -66,7 +66,7 @@ internal fun PropertyListContent(
                     PropertyItem(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+                            .padding(horizontal = Dimens.paddingSmall),
                         property = property,
                         onItemClick = {
                             onItemClick.invoke(property)

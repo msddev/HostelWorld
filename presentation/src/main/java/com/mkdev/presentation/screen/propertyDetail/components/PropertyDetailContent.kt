@@ -42,7 +42,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -51,7 +50,6 @@ import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.ExpandableTextView
 import com.mkdev.presentation.common.components.GlideImageLoader
-import com.mkdev.presentation.common.utils.textSp
 import com.mkdev.presentation.model.property.FacilityListModel
 import com.mkdev.presentation.model.property.ImagesGalleryModel
 import com.mkdev.presentation.model.property.PricePerNightModel
@@ -110,14 +108,14 @@ internal fun PropertyDetailContent(
                         .verticalScroll(rememberScrollState())
                         .fillMaxSize()
                         .padding(padding)
-                        .padding(horizontal = dimensionResource(R.dimen.padding_standard)),
+                        .padding(horizontal = Dimens.paddingStandard),
                 ) {
                     HeaderImageView(
                         modifier = Modifier.fillMaxWidth(),
                         property = property,
                     )
 
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
+                    Spacer(modifier = Modifier.height(Dimens.paddingStandard))
 
                     PropertyNameAndLocationView(
                         modifier = Modifier.wrapContentSize(),
@@ -127,56 +125,59 @@ internal fun PropertyDetailContent(
                     HorizontalDivider(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = dimensionResource(R.dimen.padding_standard)),
-                        thickness = dimensionResource(R.dimen.divider_thickness),
-                        color = GrayScale200,
+                            .padding(vertical = Dimens.paddingStandard),
+                        thickness = Dimens.dividerThickness,
+                        color = Colors.GrayScale200,
                     )
 
                     Text(
                         modifier = Modifier.wrapContentSize(),
                         text = stringResource(R.string.photos),
                         maxLines = 1,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     )
+
+                    Spacer(modifier = Modifier.height(Dimens.padding2xSmall))
 
                     PhotosView(
                         modifier = Modifier.fillMaxWidth(),
                         images = property.imagesGallery,
                     )
 
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
+                    Spacer(modifier = Modifier.height(Dimens.paddingStandard))
 
                     Text(
                         modifier = Modifier.wrapContentSize(),
                         text = stringResource(R.string.description),
                         maxLines = 1,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     )
 
+                    Spacer(modifier = Modifier.height(Dimens.padding2xSmall))
+
                     ExpandableTextView(
-                        fontSize = dimensionResource(R.dimen.text_size_small).textSp,
+                        fontSize = Dimens.textSizeMedium,
                         text = property.overview,
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
+                    Spacer(modifier = Modifier.height(Dimens.paddingStandard))
 
                     Text(
                         modifier = Modifier.wrapContentSize(),
                         text = stringResource(R.string.features),
                         maxLines = 1,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     )
+
+                    Spacer(modifier = Modifier.height(Dimens.padding2xSmall))
 
                     FacilitiesView(
                         modifier = Modifier.fillMaxWidth(),
                         facilities = property.facilities
                     )
 
-                    Spacer(modifier = Modifier.height(120.dp))
+                    Spacer(modifier = Modifier.height(Dimens.propertyDetailEndOfListSpace))
                 }
 
                 ReservedSection(
@@ -197,12 +198,12 @@ private fun BoxScope.ReservedSection(
         modifier = Modifier
             .fillMaxWidth()
             .align(Alignment.BottomCenter)
-            .padding(dimensionResource(R.dimen.padding_small))
+            .padding(Dimens.paddingSmall)
             .background(
                 Color.Black,
-                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large))
+                shape = RoundedCornerShape(Dimens.cornerRadiusXLarge)
             )
-            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+            .padding(horizontal = Dimens.paddingXSmall),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
@@ -212,23 +213,23 @@ private fun BoxScope.ReservedSection(
                 text = stringResource(R.string.price),
                 maxLines = 1,
                 color = Color.White,
-                fontSize = dimensionResource(R.dimen.text_size_small).textSp,
+                fontSize = Dimens.textSizeSmall,
             )
             Text(
                 modifier = Modifier.wrapContentSize(),
-                text = "${lowestPricePerNight.getCurrencySymbol()}${lowestPricePerNight.value}/night",
+                text = "${lowestPricePerNight.getCurrencySymbol()}${lowestPricePerNight.value}/" +
+                        stringResource(R.string.night_text),
                 maxLines = 1,
                 color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = dimensionResource(R.dimen.text_size_default).textSp,
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             )
         }
 
         Button(
             modifier = Modifier
                 .weight(1f)
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_x_large)))
-                .padding(dimensionResource(R.dimen.padding_small)),
+                .clip(RoundedCornerShape(Dimens.cornerRadiusXLarge))
+                .padding(Dimens.paddingSmall),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White,
                 contentColor = Color.Black
@@ -253,10 +254,10 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
                 imageUrl = item.getImageUrl(),
                 modifier = Modifier
                     .size(110.dp)
-                    .padding(dimensionResource(R.dimen.padding_2x_small))
+                    .padding(Dimens.padding2xSmall)
                     .clip(
                         RoundedCornerShape(
-                            size = dimensionResource(id = R.dimen.corner_radius_small)
+                            size = Dimens.cornerRadiusSmall
                         )
                     ),
                 contentScale = ContentScale.Crop,
@@ -270,8 +271,8 @@ private fun PhotosView(modifier: Modifier, images: List<ImagesGalleryModel>) {
 private fun FacilitiesView(modifier: Modifier, facilities: List<FacilityListModel>) {
     FlowRow(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_2x_small)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_2x_small))
+        horizontalArrangement = Arrangement.spacedBy(Dimens.padding2xSmall),
+        verticalArrangement = Arrangement.spacedBy(Dimens.padding2xSmall)
     ) {
 
         facilities.forEach { category ->
@@ -290,55 +291,54 @@ private fun ColumnScope.PropertyNameAndLocationView(modifier: Modifier, property
         modifier = modifier,
         text = property.name,
         maxLines = 1,
-        fontWeight = FontWeight.Bold,
-        fontSize = dimensionResource(R.dimen.text_size_large).textSp,
+        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
     )
 
-    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+    Spacer(modifier = Modifier.height(Dimens.paddingSmall))
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            modifier = Modifier.size(dimensionResource(R.dimen.icon_size_small)),
+            modifier = Modifier.size(Dimens.iconSizeSmall),
             painter = painterResource(id = R.drawable.ic_location),
             contentDescription = null,
-            tint = Amber,
+            tint = Colors.Amber,
         )
 
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+                .padding(horizontal = Dimens.paddingSmall),
             text = property.address1,
             maxLines = 1,
-            fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
-            color = GrayScale700
+            color = Colors.GrayScale700,
+            style = MaterialTheme.typography.titleSmall,
         )
     }
 
-    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+    Spacer(modifier = Modifier.height(Dimens.paddingSmall))
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            modifier = Modifier.size(dimensionResource(R.dimen.icon_size_small)),
+            modifier = Modifier.size(Dimens.iconSizeSmall),
             painter = painterResource(id = R.drawable.ic_star),
             contentDescription = null,
-            tint = Amber,
+            tint = Colors.Amber,
         )
 
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+                .padding(horizontal = Dimens.paddingSmall),
             text = "${property.overallRating.convertOverallRating()} (${property.overallRating.numberOfRatings} reviews)",
             maxLines = 1,
-            fontSize = dimensionResource(R.dimen.text_size_medium).textSp,
-            color = GrayScale700
+            style = MaterialTheme.typography.titleSmall,
+            color = Colors.GrayScale700
         )
     }
 }
@@ -347,7 +347,7 @@ private fun ColumnScope.PropertyNameAndLocationView(modifier: Modifier, property
 private fun HeaderImageView(modifier: Modifier, property: PropertyModel) {
     GlideImageLoader(
         modifier = modifier
-            .clip(RoundedCornerShape(size = dimensionResource(id = R.dimen.corner_radius_small))),
+            .clip(RoundedCornerShape(size = Dimens.cornerRadiusSmall)),
         imageUrl = property.imagesGallery.takeIf { it.isNotEmpty() }?.get(0)
             ?.getImageUrl()
             .orEmpty(),

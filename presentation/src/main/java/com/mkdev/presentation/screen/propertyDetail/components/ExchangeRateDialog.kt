@@ -28,11 +28,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.mkdev.presentation.R
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarTitle
+import com.mkdev.presentation.theme.Dimens
 
 @Composable
 internal fun ExchangeRateDialog(
@@ -61,18 +61,18 @@ internal fun ExchangeRateDialog(
             Card(
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(dimensionResource(R.dimen.padding_standard))
+                    .padding(Dimens.paddingStandard)
                     .clickable(
                         onClick = {},
                         indication = null,
                         interactionSource = remember { MutableInteractionSource() }),
-                elevation = CardDefaults.cardElevation(dimensionResource(R.dimen.card_elevation_6dp)),
+                elevation = CardDefaults.cardElevation(Dimens.cardElevation6dp),
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White, // Card background color
                     contentColor = Color.Black  // Card content color,e.g.text
                 ),
             ) {
-                Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_standard))) {
+                Column(modifier = Modifier.padding(Dimens.paddingStandard)) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -85,7 +85,7 @@ internal fun ExchangeRateDialog(
                         )
 
                         IconButton(
-                            modifier = Modifier.size(dimensionResource(R.dimen.icon_size_standard)),
+                            modifier = Modifier.size(Dimens.iconSizeStandard),
                             onClick = onDismiss
                         ) {
                             Icon(
@@ -96,7 +96,7 @@ internal fun ExchangeRateDialog(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
+                    Spacer(modifier = Modifier.height(Dimens.paddingStandard))
 
                     if (isLoading) {
                         CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
@@ -113,7 +113,7 @@ internal fun ExchangeRateDialog(
                                             onCurrencySelected(currencyCode, exchangeRate)
                                         }
                                         .fillMaxWidth()
-                                        .padding(dimensionResource(R.dimen.padding_small))
+                                        .padding(Dimens.paddingSmall)
                                 )
                             }
                         }
