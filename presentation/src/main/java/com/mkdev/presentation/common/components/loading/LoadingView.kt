@@ -12,15 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.mkdev.presentation.R
+import com.mkdev.presentation.common.utils.textSp
 
 @Composable
-fun LoadingColumn(
-    title: String,
+fun LoadingView(
     modifier: Modifier = Modifier,
+    text: String,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -29,20 +27,14 @@ fun LoadingColumn(
     ) {
         Text(
             modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_standard)),
-            text = title,
+            text = text,
             textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+            lineHeight = dimensionResource(R.dimen.view_text_height).textSp
         )
         CircularProgressIndicator(
             modifier = Modifier
-                .size(40.dp)
+                .size(dimensionResource(R.dimen.circular_loading_size_medium))
                 .padding(top = dimensionResource(R.dimen.padding_standard))
         )
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-private fun LoadingColumnPreview() {
-    LoadingColumn(title = "Please wait...")
 }

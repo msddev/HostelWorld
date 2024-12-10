@@ -16,15 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.mkdev.presentation.R
+import com.mkdev.presentation.common.utils.textSp
 
 @Composable
-fun ErrorColumn(
+fun ErrorView(
     modifier: Modifier = Modifier,
-    message: String,
+    text: String,
     actionButtonText: String = stringResource(R.string.retry),
     onAction: () -> Unit,
 ) {
@@ -35,16 +33,16 @@ fun ErrorColumn(
     ) {
         Text(
             modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_standard)),
-            text = message,
+            text = text,
             textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+            lineHeight = dimensionResource(R.dimen.view_text_height).textSp
         )
 
         Icon(
             imageVector = Icons.Filled.Face,
             contentDescription = null,
             modifier = Modifier
-                .size(40.dp)
+                .size(dimensionResource(R.dimen.icon_size_x_large))
                 .padding(top = dimensionResource(R.dimen.padding_standard)),
         )
 
@@ -55,14 +53,4 @@ fun ErrorColumn(
             Text(text = actionButtonText)
         }
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-private fun ErrorColumnPreview() {
-    ErrorColumn(
-        message = "Oops!",
-        actionButtonText = stringResource(R.string.retry),
-        onAction = {}
-    )
 }

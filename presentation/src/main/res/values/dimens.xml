@@ -37,5 +37,7 @@
     <dimen name="divider_thickness">1dp</dimen>
     <dimen name="splash_text_size_title">28sp</dimen>
     <dimen name="splash_text_line_height_title">36sp</dimen>
+    <dimen name="view_text_height">20sp</dimen>
+    <dimen name="circular_loading_size_medium">40dp</dimen>
 
 </resources>
