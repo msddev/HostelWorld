@@ -1,6 +1,5 @@
 package com.mkdev.presentation.screen.propertyDetail.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -48,13 +47,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.ExpandableTextView
 import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
-import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.model.property.FacilityListModel
 import com.mkdev.presentation.model.property.ImagesGalleryModel
 import com.mkdev.presentation.model.property.PricePerNightModel
@@ -356,20 +353,4 @@ private fun HeaderImageView(modifier: Modifier, property: PropertyModel) {
             .orEmpty(),
         contentScale = ContentScale.FillWidth
     )
-}
-
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun ScreenPreview() {
-    MaterialTheme {
-        PropertyDetailContent(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(dimensionResource(id = R.dimen.padding_x_small)),
-            property = mockPropertyItem,
-            onCurrencyFilterClick = {},
-            onBackClick = {},
-            onReservedClick = {}
-        )
-    }
 }

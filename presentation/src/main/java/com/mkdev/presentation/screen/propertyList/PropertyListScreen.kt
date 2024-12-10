@@ -3,6 +3,7 @@ package com.mkdev.presentation.screen.propertyList
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -21,6 +22,9 @@ internal fun PropertyListScreen(
     sharedViewModel: SharedViewModel = hiltViewModel(LocalContext.current as ComponentActivity),
     navigateToPropertyDetailScreen: () -> Unit,
 ) {
+    LaunchedEffect(Unit) {
+        propertyListViewModel.fetchPropertyList()
+    }
 
     when (val uiState = propertyListViewModel.properties.observeAsState().value) {
         is PropertyListUiState.Loading, null -> {

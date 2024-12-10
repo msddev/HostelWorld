@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.GlideImageLoader
 import com.mkdev.presentation.common.utils.textSp
-import com.mkdev.presentation.mockData.mockPropertyItem
 import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.theme.*
 
@@ -136,19 +135,5 @@ internal fun PropertyItem(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun ScreenPreview() {
-    MaterialTheme {
-        PropertyItem(
-            modifier = Modifier.fillMaxWidth(),
-            property = mockPropertyItem,
-            onItemClick = {
-
-            },
-        )
     }
 }

@@ -19,10 +19,6 @@ internal class PropertyListViewModel @Inject constructor(
     private val _properties = MutableLiveData<PropertyListUiState>(PropertyListUiState.Loading)
     val properties: LiveData<PropertyListUiState> = _properties
 
-    init {
-        fetchPropertyList()
-    }
-
     fun fetchPropertyList() {
         _properties.value = PropertyListUiState.Loading
 

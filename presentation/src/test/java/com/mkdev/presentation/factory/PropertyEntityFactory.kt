@@ -1,4 +1,4 @@
-package com.mkdev.domain.factory
+package com.mkdev.presentation.factory
 
 import com.mkdev.domain.entity.property.DistanceEntity
 import com.mkdev.domain.entity.property.FacilityEntity

@@ -16,7 +16,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mkdev.presentation.R
-import com.mkdev.presentation.mockData.mockPropertyList
 import com.mkdev.presentation.model.property.PropertyModel
 
 @Composable
@@ -77,21 +76,4 @@ internal fun PropertyListContent(
             }
         }
     )
-}
-
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun ScreenPreview() {
-    MaterialTheme {
-        PropertyListContent(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(dimensionResource(id = R.dimen.padding_x_small)),
-            featuredProperties = mockPropertyList,
-            normalProperties = mockPropertyList,
-            onItemClick = {
-
-            },
-        )
-    }
 }
