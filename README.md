@@ -6,9 +6,13 @@ The HostelWorld app is a mobile application built using Kotlin and Jetpack Compo
 
 ## Screenshots
 
-Splash Screen | Property List | Property Detail | Currency Selection |
----|---|---|---|
-![Splash Screen Screenshot](screenshots/splash_screen.png) | ![Property List Screenshot](screenshots/property_list.png) | ![Property Detail Screenshot](screenshots/property_detail.png) | ![Currency Selection Screenshot](screenshots/currency_selection.png) |
+| Splash Screen | Property List |
+|---|---|
+| ![Splash Screen Screenshot](screenshots/splash_screen.png) | ![Property List Screenshot](screenshots/property_list.png) |
+
+| Property Detail | Currency Selection |
+|---|---|
+| ![Property Detail Screenshot](screenshots/property_detail.png) | ![Currency Selection Screenshot](screenshots/currency_selection.png) |
 
 ## Project Requirements
 
