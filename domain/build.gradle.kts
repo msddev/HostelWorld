@@ -13,4 +13,8 @@ dependencies {
     // Rx
     implementation(libs.rxjava2)
     implementation(libs.rxkotlin2)
+
+    // Unit Test
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito)
 }
