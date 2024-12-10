@@ -15,6 +15,7 @@ The project follows the **MVVM (Model-View-ViewModel)** architectural pattern wi
 *   **RxJava:** Employed for reactive programming and data flow between the data and domain layers.
 *   **LiveData:** Used to expose data from ViewModels to UI components in the presentation layer.
 *   **Jetpack Compose:** The modern UI toolkit, enabling declarative UI development.
+*   **Version Catalog:**  Utilized for managing dependencies, ensuring consistency, and simplifying updates.
 
 ## Project Structure
 
