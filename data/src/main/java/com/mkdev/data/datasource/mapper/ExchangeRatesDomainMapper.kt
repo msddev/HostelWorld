@@ -1,10 +1,14 @@
 package com.mkdev.data.datasource.mapper
 
 import com.mkdev.data.datasource.remote.response.exchangeRates.ExchangeRatesResponse
-import com.mkdev.domain.entity.exchangeRates.ExchangeRatesEntity
+import com.mkdev.domain.model.exchangeRates.ExchangeRatesModel
+import javax.inject.Inject
 
-internal fun ExchangeRatesResponse.toExchangeRatesEntity(): ExchangeRatesEntity {
-    return ExchangeRatesEntity(
-        rates = this.rates
-    )
+class ExchangeRatesDomainMapper @Inject constructor() {
+
+    fun mapToExchangeRatesModel(exchangeRatesResponse: ExchangeRatesResponse): ExchangeRatesModel {
+        return ExchangeRatesModel(
+            rates = exchangeRatesResponse.rates
+        )
+    }
 }

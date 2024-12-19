@@ -1,5 +1,7 @@
 package com.mkdev.hostelworld.di
 
+import com.mkdev.data.datasource.mapper.ExchangeRatesDomainMapper
+import com.mkdev.data.datasource.mapper.PropertyDomainMapper
 import com.mkdev.data.datasource.remote.api.ExchangeRatesApi
 import com.mkdev.data.datasource.remote.api.NetworkStatsApi
 import com.mkdev.data.datasource.remote.api.PropertyApi
@@ -34,8 +36,14 @@ class DomainModule {
 
     @Provides
     @Singleton
-    fun providePropertyRepository(propertyApi: PropertyApi): PropertyRepository =
-        PropertyRepositoryImpl(propertyApi = propertyApi)
+    fun providePropertyRepository(
+        propertyApi: PropertyApi,
+        propertyDomainMapper: PropertyDomainMapper,
+    ): PropertyRepository =
+        PropertyRepositoryImpl(
+            propertyApi = propertyApi,
+            propertyDomainMapper = propertyDomainMapper
+        )
 
     @Provides
     @Singleton
@@ -50,8 +58,14 @@ class DomainModule {
 
     @Provides
     @Singleton
-    fun providePropertyDetailRepository(exchangeRatesApi: ExchangeRatesApi): PropertyDetailRepository =
-        PropertyDetailRepositoryImpl(exchangeRatesApi = exchangeRatesApi)
+    fun providePropertyDetailRepository(
+        exchangeRatesApi: ExchangeRatesApi,
+        exchangeRatesDomainMapper: ExchangeRatesDomainMapper,
+    ): PropertyDetailRepository =
+        PropertyDetailRepositoryImpl(
+            exchangeRatesApi = exchangeRatesApi,
+            exchangeRatesDomainMapper = exchangeRatesDomainMapper,
+        )
 
     @Provides
     @Singleton

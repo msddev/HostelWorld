@@ -1,45 +1,45 @@
 package com.mkdev.domain.factory
 
-import com.mkdev.domain.entity.property.DistanceEntity
-import com.mkdev.domain.entity.property.FacilityEntity
-import com.mkdev.domain.entity.property.FacilityListEntity
-import com.mkdev.domain.entity.property.ImagesGalleryEntity
-import com.mkdev.domain.entity.property.OverallRatingEntity
-import com.mkdev.domain.entity.property.PricePerNightEntity
-import com.mkdev.domain.entity.property.PropertyEntity
+import com.mkdev.domain.model.property.DistanceModel
+import com.mkdev.domain.model.property.FacilityModel
+import com.mkdev.domain.model.property.FacilityListModel
+import com.mkdev.domain.model.property.ImagesGalleryModel
+import com.mkdev.domain.model.property.OverallRatingModel
+import com.mkdev.domain.model.property.PricePerNightModel
+import com.mkdev.domain.model.property.PropertyModel
 
-fun createMockOverallRatingEntity() = OverallRatingEntity(
+fun createMockOverallRatingEntity() = OverallRatingModel(
     numberOfRatings = "100",
     overall = 4
 )
 
-internal fun createMockPricePerNightEntity() = PricePerNightEntity(
+internal fun createMockPricePerNightEntity() = PricePerNightModel(
     currency = "USD",
     value = "100"
 )
 
-internal fun createMockImagesGalleryEntity() = ImagesGalleryEntity(
+internal fun createMockImagesGalleryEntity() = ImagesGalleryModel(
     prefix = "res.cloudinary.com/test-hostelworld-com/image/upload/f_auto,q_auto",
     suffix = "/v1/propertyimages/1/113/1.jpg"
 )
 
-internal fun createMockFacilityEntity() = FacilityEntity(
+internal fun createMockFacilityEntity() = FacilityModel(
     id = "1",
     name = "Free WiFi"
 )
 
-internal fun createMockFacilityListEntity() = FacilityListEntity(
+internal fun createMockFacilityListEntity() = FacilityListModel(
     facilities = listOf(createMockFacilityEntity()),
     name = "General",
     id = "1"
 )
 
-internal fun createMockDistanceEntity() = DistanceEntity(
+internal fun createMockDistanceEntity() = DistanceModel(
     units = "km",
     value = 2.5
 )
 
-internal fun createMockPropertyEntity() = PropertyEntity(
+internal fun createMockPropertyEntity() = PropertyModel(
     address1 = "123 Main St",
     address2 = "Apt 4B",
     distance = createMockDistanceEntity(),

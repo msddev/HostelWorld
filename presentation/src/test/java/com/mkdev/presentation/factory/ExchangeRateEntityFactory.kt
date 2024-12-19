@@ -1,9 +1,9 @@
 package com.mkdev.presentation.factory
 
-import com.mkdev.domain.entity.exchangeRates.ExchangeRatesEntity
+import com.mkdev.domain.model.exchangeRates.ExchangeRatesModel
 
 
-internal fun createMockExchangeRatesEntity() = ExchangeRatesEntity(
+internal fun createMockExchangeRatesEntity() = ExchangeRatesModel(
     rates = mapOf(
         "EUR" to 0.85,
         "USD" to 1.0,
