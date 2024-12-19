@@ -3,7 +3,6 @@ package com.mkdev.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mkdev.domain.usecase.GetPropertyListUseCase
-import com.mkdev.presentation.mapper.toPropertyModel
 import com.mkdev.presentation.screen.propertyList.PropertyListUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,9 +25,9 @@ internal class PropertyListViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { propertyEntities ->
+                { propertyModels ->
                     _properties.value =
-                        PropertyListUiState.Success(data = propertyEntities.map { it.toPropertyModel() })
+                        PropertyListUiState.Success(data = propertyModels)
                 },
                 { throwable ->
                     _properties.value =

@@ -26,9 +26,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import com.mkdev.domain.model.property.PropertyModel
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.GlideImageLoader
-import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.theme.*
 
 @Composable

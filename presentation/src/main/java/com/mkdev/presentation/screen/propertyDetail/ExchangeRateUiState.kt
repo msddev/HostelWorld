@@ -1,6 +1,6 @@
 package com.mkdev.presentation.screen.propertyDetail
 
-import com.mkdev.presentation.model.exchangeRates.ExchangeRatesModel
+import com.mkdev.domain.model.exchangeRates.ExchangeRatesModel
 
 internal sealed class ExchangeRateUiState {
     object Loading : ExchangeRateUiState()

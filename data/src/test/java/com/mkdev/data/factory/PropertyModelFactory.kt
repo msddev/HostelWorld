@@ -1,4 +1,4 @@
-package com.mkdev.presentation.factory
+package com.mkdev.data.factory
 
 import com.mkdev.domain.model.property.DistanceModel
 import com.mkdev.domain.model.property.FacilityListModel
@@ -7,6 +7,10 @@ import com.mkdev.domain.model.property.ImagesGalleryModel
 import com.mkdev.domain.model.property.OverallRatingModel
 import com.mkdev.domain.model.property.PricePerNightModel
 import com.mkdev.domain.model.property.PropertyModel
+
+internal fun createMockPropertyListModel(): List<PropertyModel> {
+    return listOf(createMockPropertyModel(), createMockPropertyModel())
+}
 
 internal fun createMockPropertyModel(): PropertyModel {
     return PropertyModel(

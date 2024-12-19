@@ -3,7 +3,7 @@ package com.mkdev.presentation.factory
 import com.mkdev.domain.model.exchangeRates.ExchangeRatesModel
 
 
-internal fun createMockExchangeRatesEntity() = ExchangeRatesModel(
+internal fun createMockExchangeRatesModel() = ExchangeRatesModel(
     rates = mapOf(
         "EUR" to 0.85,
         "USD" to 1.0,

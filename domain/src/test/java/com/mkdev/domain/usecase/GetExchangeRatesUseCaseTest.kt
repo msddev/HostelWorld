@@ -1,6 +1,6 @@
 package com.mkdev.domain.usecase
 
-import com.mkdev.domain.factory.createMockExchangeRatesEntity
+import com.mkdev.domain.factory.createMockExchangeRatesModel
 import com.mkdev.domain.repository.NetworkStatsRepository
 import com.mkdev.domain.repository.PropertyDetailRepository
 import io.reactivex.Completable
@@ -40,10 +40,10 @@ class GetExchangeRatesUseCaseTest {
     @Test
     fun `invoke should return exchange rate list from repository on success`() {
         // Given
-        val exchangeRatesEntity = createMockExchangeRatesEntity()
+        val exchangeRatesModel = createMockExchangeRatesModel()
         `when`(propertyDetailRepository.getExchangeRates()).thenReturn(
             Single.just(
-                exchangeRatesEntity
+                exchangeRatesModel
             )
         )
         `when`(networkStatsRepository.trackNetworkStats(anyString(), anyLong())).thenReturn(
@@ -54,7 +54,7 @@ class GetExchangeRatesUseCaseTest {
         val result = getExchangeRatesUseCase().blockingGet()
 
         // Then
-        Assert.assertEquals(exchangeRatesEntity, result)
+        Assert.assertEquals(exchangeRatesModel, result)
         verify(networkStatsRepository).trackNetworkStats(
             anyString(),
             anyLong()
@@ -79,10 +79,10 @@ class GetExchangeRatesUseCaseTest {
     @Test
     fun `invoke should handle error during network stats tracking`() {
         // Given
-        val exchangeRatesEntity = createMockExchangeRatesEntity()
+        val exchangeRatesModel = createMockExchangeRatesModel()
         `when`(propertyDetailRepository.getExchangeRates()).thenReturn(
             Single.just(
-                exchangeRatesEntity
+                exchangeRatesModel
             )
         )
         val trackingError = Throwable("Tracking error")
@@ -94,15 +94,15 @@ class GetExchangeRatesUseCaseTest {
         val result = getExchangeRatesUseCase().blockingGet()
 
         // Then
-        Assert.assertEquals(exchangeRatesEntity, result) // Should still return exchange rates
+        Assert.assertEquals(exchangeRatesModel, result) // Should still return exchange rates
         verify(networkStatsRepository).trackNetworkStats(anyString(), anyLong())
     }
 
     @Test
     fun `invoke should return consistent exchange rates across multiple calls`() {
         // Given
-        val exchangeRatesEntity = createMockExchangeRatesEntity()
-        `when`(propertyDetailRepository.getExchangeRates()).thenReturn(Single.just(exchangeRatesEntity))
+        val exchangeRatesModel = createMockExchangeRatesModel()
+        `when`(propertyDetailRepository.getExchangeRates()).thenReturn(Single.just(exchangeRatesModel))
         `when`(networkStatsRepository.trackNetworkStats(anyString(), anyLong())).thenReturn(Completable.complete())
 
         // When

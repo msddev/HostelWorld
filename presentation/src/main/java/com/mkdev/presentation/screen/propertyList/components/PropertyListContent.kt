@@ -12,8 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.mkdev.domain.model.property.PropertyModel
 import com.mkdev.presentation.R
-import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.theme.Dimens
 
 @Composable

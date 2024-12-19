@@ -20,7 +20,9 @@ import javax.inject.Inject
 class PropertyDomainMapper @Inject constructor() {
 
     fun mapToPropertyListModel(propertyListResponse: PropertyListResponse): List<PropertyModel> {
-        return propertyListResponse.properties.map { mapToPropertyModel(it) }
+        return propertyListResponse.properties.map {
+            mapToPropertyModel(it)
+        }
     }
 
     fun mapToPropertyModel(propertyResponse: PropertyResponse): PropertyModel {

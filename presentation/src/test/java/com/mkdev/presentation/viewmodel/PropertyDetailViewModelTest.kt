@@ -2,8 +2,7 @@ package com.mkdev.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mkdev.domain.usecase.GetExchangeRatesUseCase
-import com.mkdev.presentation.factory.createMockExchangeRatesEntity
-import com.mkdev.presentation.mapper.toExchangeRatesModel
+import com.mkdev.presentation.factory.createMockExchangeRatesModel
 import com.mkdev.presentation.screen.propertyDetail.ExchangeRateUiState
 import com.mkdev.presentation.util.RxImmediateSchedulerRule
 import io.reactivex.Single
@@ -64,8 +63,8 @@ class PropertyDetailViewModelTest {
     @Test
     fun `fetchExchangeRates should update exchangeRates with Success state on success`() {
         // Given
-        val exchangeRatesEntity = createMockExchangeRatesEntity()
-        `when`(getExchangeRatesUseCase.invoke()).thenReturn(Single.just(exchangeRatesEntity))
+        val exchangeRatesModel = createMockExchangeRatesModel()
+        `when`(getExchangeRatesUseCase.invoke()).thenReturn(Single.just(exchangeRatesModel))
 
         // When
         propertyDetailViewModel.fetchExchangeRates()
@@ -76,7 +75,7 @@ class PropertyDetailViewModelTest {
         val successState =
             propertyDetailViewModel.exchangeRates.value as ExchangeRateUiState.Success
         Assert.assertEquals(
-            exchangeRatesEntity.toExchangeRatesModel(),
+            exchangeRatesModel,
             successState.data
         )
     }

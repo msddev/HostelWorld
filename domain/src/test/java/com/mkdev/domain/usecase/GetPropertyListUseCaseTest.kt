@@ -1,6 +1,6 @@
 package com.mkdev.domain.usecase
 
-import com.mkdev.domain.factory.createMockPropertyEntityList
+import com.mkdev.domain.factory.createMockPropertyModelList
 import com.mkdev.domain.repository.NetworkStatsRepository
 import com.mkdev.domain.repository.PropertyRepository
 import io.reactivex.Completable
@@ -39,8 +39,8 @@ class GetPropertyListUseCaseTest {
     @Test
     fun `invoke should return property list from repository on success`() {
         // Given
-        val propertyEntityList = createMockPropertyEntityList()
-        `when`(propertyRepository.getProperties()).thenReturn(Single.just(propertyEntityList))
+        val propertyModelList = createMockPropertyModelList()
+        `when`(propertyRepository.getProperties()).thenReturn(Single.just(propertyModelList))
         `when`(
             networkStatsRepository.trackNetworkStats(
                 action = anyString(),
@@ -54,7 +54,7 @@ class GetPropertyListUseCaseTest {
         val result = getPropertyListUseCase().blockingGet()
 
         // Then
-        Assert.assertEquals(propertyEntityList, result)
+        Assert.assertEquals(propertyModelList, result)
         verify(networkStatsRepository).trackNetworkStats(
             action = anyString(),
             duration = anyLong()
@@ -82,8 +82,8 @@ class GetPropertyListUseCaseTest {
     @Test
     fun `invoke should handle error during network stats tracking`() {
         // Given
-        val propertyEntityList = createMockPropertyEntityList()
-        `when`(propertyRepository.getProperties()).thenReturn(Single.just(propertyEntityList))
+        val propertyModelList = createMockPropertyModelList()
+        `when`(propertyRepository.getProperties()).thenReturn(Single.just(propertyModelList))
         val trackingError = Throwable("Tracking error")
         `when`(networkStatsRepository.trackNetworkStats(anyString(), anyLong())).thenReturn(Completable.error(trackingError))
 
@@ -91,7 +91,7 @@ class GetPropertyListUseCaseTest {
         val result = getPropertyListUseCase().blockingGet()
 
         // Then
-        Assert.assertEquals(propertyEntityList, result) // Should still return the property list
+        Assert.assertEquals(propertyModelList, result) // Should still return the property list
         verify(networkStatsRepository).trackNetworkStats(anyString(), anyLong())
     }
 

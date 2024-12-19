@@ -3,7 +3,7 @@ package com.mkdev.presentation.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mkdev.domain.repository.NetworkStatsRepository
 import com.mkdev.domain.usecase.GetPropertyListUseCase
-import com.mkdev.presentation.factory.createMockPropertyEntity
+import com.mkdev.presentation.factory.createMockPropertyModel
 import com.mkdev.presentation.screen.propertyList.PropertyListUiState
 import com.mkdev.presentation.util.RxImmediateSchedulerRule
 import io.reactivex.Single
@@ -67,8 +67,8 @@ class PropertyListViewModelTest {
     @Test
     fun `fetchPropertyList should update properties with Success state on success`() {
         // Given
-        val propertyEntityList = listOf(createMockPropertyEntity())
-        `when`(getPropertyListUseCase.invoke()).thenReturn(Single.just(propertyEntityList))
+        val propertyModelList = listOf(createMockPropertyModel())
+        `when`(getPropertyListUseCase.invoke()).thenReturn(Single.just(propertyModelList))
 
         // When
         propertyListViewModel.fetchPropertyList()
@@ -77,7 +77,7 @@ class PropertyListViewModelTest {
         verify(getPropertyListUseCase).invoke()
         Assert.assertTrue(propertyListViewModel.properties.value is PropertyListUiState.Success)
         val successState = propertyListViewModel.properties.value as PropertyListUiState.Success
-        Assert.assertEquals(propertyEntityList.size, successState.data.size)
+        Assert.assertEquals(propertyModelList.size, successState.data.size)
     }
 
     @Test

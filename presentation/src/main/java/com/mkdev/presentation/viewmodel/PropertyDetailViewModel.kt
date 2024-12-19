@@ -3,7 +3,6 @@ package com.mkdev.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mkdev.domain.usecase.GetExchangeRatesUseCase
-import com.mkdev.presentation.mapper.toExchangeRatesModel
 import com.mkdev.presentation.screen.propertyDetail.ExchangeRateUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,9 +25,9 @@ internal class PropertyDetailViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { exchangeRatesEntity ->
+                { exchangeRatesModel ->
                     _exchangeRates.value =
-                        ExchangeRateUiState.Success(data = exchangeRatesEntity?.toExchangeRatesModel())
+                        ExchangeRateUiState.Success(data = exchangeRatesModel)
                 },
                 { throwable ->
                     _exchangeRates.value =

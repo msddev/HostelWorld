@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.mkdev.domain.model.property.PricePerNightModel
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.error.ErrorView
-import com.mkdev.presentation.model.property.PricePerNightModel
 import com.mkdev.presentation.screen.propertyDetail.components.ExchangeRateDialog
 import com.mkdev.presentation.screen.propertyDetail.components.PropertyDetailContent
 import com.mkdev.presentation.viewmodel.PropertyDetailViewModel

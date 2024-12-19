@@ -11,8 +11,8 @@ import io.reactivex.schedulers.Schedulers
  * class GetExchangeRatesUseCase(
  *     private val propertyDetailRepository: PropertyDetailRepository,
  *     networkStatsRepository: NetworkStatsRepository,
- * ) : BaseUseCase<ExchangeRatesEntity>(networkStatsRepository) {
- *     operator fun invoke(): Single<ExchangeRatesEntity> {
+ * ) : BaseUseCase<ExchangeRatesModel>(networkStatsRepository) {
+ *     operator fun invoke(): Single<ExchangeRatesModel> {
  *         return trackNetworkStats(
  *             propertyDetailRepository.getExchangeRates(),
  *             NetworkStatsActionKeys.LOAD_RATES

@@ -47,13 +47,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mkdev.domain.model.property.FacilityListModel
+import com.mkdev.domain.model.property.ImagesGalleryModel
+import com.mkdev.domain.model.property.PricePerNightModel
+import com.mkdev.domain.model.property.PropertyModel
 import com.mkdev.presentation.R
 import com.mkdev.presentation.common.components.ExpandableTextView
 import com.mkdev.presentation.common.components.GlideImageLoader
-import com.mkdev.presentation.model.property.FacilityListModel
-import com.mkdev.presentation.model.property.ImagesGalleryModel
-import com.mkdev.presentation.model.property.PricePerNightModel
-import com.mkdev.presentation.model.property.PropertyModel
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarBackButton
 import com.mkdev.presentation.screen.propertyDetail.components.topAppBar.TopAppBarTitle
 import com.mkdev.presentation.theme.*
